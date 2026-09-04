@@ -328,6 +328,15 @@ p{margin:0}
 }
 .card .cta.ghost:hover{background:transparent; color:#fff; border-color:rgba(255,255,255,.45)}
 
+/* Блок «это не всё»: работ больше, но ссылку дать можно не на каждую. */
+.more{
+  margin-top:22px; padding:26px 24px 24px;
+  border:1px dashed rgba(255,255,255,.16); border-radius:18px;
+}
+.more h3{font-size:18px; font-weight:600; letter-spacing:-.02em; color:#F2F4F7; margin-bottom:10px}
+.more p{font-size:15px; line-height:1.55; color:#9AA1AA; max-width:78ch}
+.more-note{margin-top:12px; font-size:13.5px; color:#71787F}
+
 /* ---------- расчёт ---------- */
 .calc{background:var(--deep); border:1px solid rgba(255,255,255,.1); border-radius:22px; padding:26px 24px 24px}
 .light .calc{background:var(--pale); border-color:rgba(0,0,0,.08)}
@@ -503,6 +512,12 @@ p{margin:0}
     <h2 class="mid rise d1">Семь работ. Любую можно открыть прямо здесь и потыкать.</h2>
     <div class="filters rise d1" id="filters"></div>
     <div class="cards" id="cards"></div>
+
+    <div class="more rise">
+      <h3>Это не всё, что я делал</h3>
+      <p>Кроме семи работ выше были боты для записи клиентов и переписки с ними, разбор присланных файлов с переносом данных в таблицы, рассылки и другие небольшие программы, которые убирают ручную работу.</p>
+      <p class="more-note">Ссылок на них не даю: часть сделана под конкретную задачу и живёт внутри компаний. Показать их могу на созвоне — с экрана.</p>
+    </div>
   </div>
 </section>
 
