@@ -141,6 +141,34 @@ p{margin:0}
 .btns{display:flex; flex-wrap:wrap; gap:12px; margin-top:34px}
 .btns .cta{margin-top:0}
 
+/* ---------- расчёт ---------- */
+.calc{background:var(--deep); border:1px solid rgba(255,255,255,.1); border-radius:22px; padding:26px 24px 24px}
+.light .calc{background:var(--pale); border-color:rgba(0,0,0,.08)}
+.c-row{display:grid; grid-template-columns:1fr 118px; gap:14px; align-items:center; margin-bottom:12px}
+.c-row label{font-size:14.5px; color:var(--light-dim)}
+.light .c-row label{color:var(--dark-dim)}
+.c-row input{
+  font-family:var(--sans); font-size:16px; font-weight:500; text-align:right;
+  color:var(--light-ink); background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.16); border-radius:11px; padding:9px 12px; width:100%;
+  font-variant-numeric:tabular-nums;
+}
+.light .c-row input{color:var(--dark-ink); background:#fff; border-color:rgba(0,0,0,.14)}
+.c-row input:focus{outline:none; border-color:var(--blue)}
+.c-out{margin-top:20px; display:grid; gap:11px}
+.c-line{padding:15px 17px; border-radius:15px; background:rgba(255,255,255,.05)}
+.light .c-line{background:rgba(0,0,0,.04)}
+.c-line .c-k{display:block; font-size:12.5px; color:var(--light-dim); margin-bottom:5px}
+.light .c-line .c-k{color:var(--dark-dim)}
+.c-line b{display:block; font-size:29px; font-weight:600; letter-spacing:-.03em;
+  font-variant-numeric:tabular-nums; line-height:1.05}
+.c-line em{display:block; font-style:normal; font-size:12.5px; color:var(--light-dim); margin-top:5px}
+.light .c-line em{color:var(--dark-dim)}
+.c-line.bad b{color:#FF6B5A}
+.c-line.good b{color:#4ED17F}
+.c-note{margin-top:16px; font-size:12.5px; line-height:1.55; color:var(--light-dim)}
+.light .c-note{color:var(--dark-dim)}
+
 /* ---------- как работаю ---------- */
 .hows{display:grid; grid-template-columns:repeat(2,1fr); gap:22px; margin-top:44px}
 @media(max-width:820px){.hows{grid-template-columns:1fr}}
@@ -215,12 +243,13 @@ p{margin:0}
 <div class="bar" id="bar"><div class="bar-in">
   <a class="me" href="#top">Азат Шарипов</a>
   <nav>
-    <a href="#w1">Эргостол</a>
-    <a href="#w2">Яркотревел</a>
+    <a href="#w1">Каталог</a>
+    <a href="#w2">Карточки</a>
     <a href="#w3">Отклики hh</a>
-    <a href="#w4">Производство</a>
+    <a href="#w4">Отчёты</a>
     <a href="#w5">Nur Hayat</a>
     <a href="#w6">Рядом</a>
+    <a href="#money">Деньги</a>
     <a href="#how">Как работаю</a>
     <a href="#call">Связаться</a>
   </nav>
@@ -249,37 +278,38 @@ p{margin:0}
 </section>
 
 <!-- ================= работа 1 ================= -->
-<section class="panel dark work" id="w1" data-dot="Эргостол">
+<section class="panel dark work" id="w1" data-dot="Каталог">
   <div class="inner work-grid">
     <div>
-      <p class="eyebrow rise">Эргостол · производство столов</p>
+      <p class="eyebrow rise">Производитель мебели · публичный каталог</p>
       <h2 class="big rise d1">Адрес страницы не совпадает с названием товара.</h2>
       <div class="facts">
         <div class="fact rise d2"><div class="k">Нашёл</div><div>Товар «Старт 3.0» лежит по адресу <span class="accent">start_2_0</span>, «Соло» — по адресу fmt02_06. Поисковик читает адрес: человек ищет новую модель и попадает не туда.</div></div>
-        <div class="fact rise d2"><div class="k">Сделал</div><div>Проверку, которая проходит весь каталог по карте сайта и присылает список расхождений. Доступа к базе не требует.</div></div>
+        <div class="fact rise d2"><div class="k">Чем плохо</div><div>Человек ищет в поиске новую модель, попадает на страницу со старым адресом и уходит. Реклама на такой товар оплачена, а покупка не случилась.</div></div>
+        <div class="fact rise d2"><div class="k">Сделал</div><div>Проверку, которая проходит весь каталог по карте сайта и присылает список расхождений. <span class="accent">Ни одного обращения к нейросети</span> — значит прогон ничего не стоит и его можно запускать хоть каждый день.</div></div>
       </div>
       <div class="btns rise d3">
-        <button class="cta" type="button" data-open="https://azatilfakovich1993-coder.github.io/ergostol-check/" data-title="Проверка каталога Эргостол">Открыть здесь</button>
+        <button class="cta" type="button" data-open="https://azatilfakovich1993-coder.github.io/ergostol-check/" data-title="Проверка каталога">Открыть здесь</button>
         <a class="cta ghost" href="https://azatilfakovich1993-coder.github.io/ergostol-check/" target="_blank" rel="noopener">В новой вкладке</a>
       </div>
     </div>
-    <div class="figure rise d1">15<em>минут на пяти товарах каталога</em></div>
+    <div class="figure rise d1">2 из 5<em>товаров, которые я открыл, вели покупателя не туда</em></div>
   </div>
 </section>
 
 <!-- ================= работа 2 ================= -->
-<section class="panel light work" id="w2" data-dot="Яркотревел">
+<section class="panel light work" id="w2" data-dot="Карточки">
   <div class="inner work-grid">
     <div class="figure rise">2.3.18<em>пункт их же оферты, который никто не выполняет</em></div>
     <div>
-      <p class="eyebrow rise d1">Яркотревел · туры</p>
+      <p class="eyebrow rise d1">Туроператор · карточки туров</p>
       <h2 class="big rise d1">Проверка записана в договоре, но её никто не делает.</h2>
       <div class="facts">
         <div class="fact rise d2"><div class="k">Нашёл</div><div>В их публичной оферте прямо сказано: карточки нужно еженедельно проверять на полноту. Руками это делать некому — значит не делается.</div></div>
         <div class="fact rise d2"><div class="k">Сделал</div><div>Проверку по 26 правилам, выведенным из этой же оферты. Пороги правятся на странице, можно добавлять свои. 23 правила из 26 работают без нейросети.</div></div>
       </div>
       <div class="btns rise d3">
-        <button class="cta" type="button" data-open="https://azatilfakovich1993-coder.github.io/yarko-check/" data-title="Проверка карточек Яркотревел">Открыть здесь</button>
+        <button class="cta" type="button" data-open="https://azatilfakovich1993-coder.github.io/yarko-check/" data-title="Проверка карточек туров">Открыть здесь</button>
         <a class="cta ghost" href="https://azatilfakovich1993-coder.github.io/yarko-check/" target="_blank" rel="noopener">В новой вкладке</a>
       </div>
     </div>
@@ -290,7 +320,7 @@ p{margin:0}
 <section class="panel deep work" id="w3" data-dot="Отклики hh">
   <div class="inner work-grid">
     <div>
-      <p class="eyebrow rise">Кадровое агентство · разбор откликов на hh</p>
+      <p class="eyebrow rise">Кадровое агентство · разбор откликов</p>
       <h2 class="big rise d1">Оказалось, что это ничего не стоит.</h2>
       <div class="facts">
         <div class="fact rise d2"><div class="k">Нашёл</div><div>В документации hh: чтобы разбирать <span class="accent">уже пришедшие отклики</span>, платный доступ к базе резюме не нужен. Он нужен только чтобы самому искать людей.</div></div>
@@ -301,7 +331,7 @@ p{margin:0}
         <a class="cta ghost" href="https://azatilfakovich1993-coder.github.io/hh-otkliki/" target="_blank" rel="noopener">В новой вкладке</a>
       </div>
     </div>
-    <div class="figure rise d1">14<em>из 17 критериев считает обычный код, не нейросеть</em></div>
+    <div class="figure rise d1">0 ₽<em>стоит доступ, за который собирались платить</em></div>
   </div>
 </section>
 
@@ -310,7 +340,7 @@ p{margin:0}
   <div class="inner work-grid">
     <div class="figure rise">0<em>отчётов по продажам было у директора</em></div>
     <div>
-      <p class="eyebrow rise d1">Производство · Ижевск</p>
+      <p class="eyebrow rise d1">Производство · металлообработка</p>
       <h2 class="big rise d1">Никто не видел, кто должен был позвонить снова.</h2>
       <div class="facts">
         <div class="fact rise d2"><div class="k">Нашёл</div><div>CRM нет, сделки живут в головах и переписке. Клиент с годовым циклом закупки просто теряется — вспомнить о нём некому.</div></div>
@@ -363,6 +393,51 @@ p{margin:0}
   </div>
 </section>
 
+<!-- ================= деньги на нейросеть ================= -->
+<section class="panel deep" id="money" data-dot="Деньги">
+  <div class="inner">
+    <div class="work-grid">
+      <div>
+        <p class="eyebrow rise">Сколько это стоит в месяц</p>
+        <h2 class="big rise d1">Нейросеть — не первый инструмент, а последний.</h2>
+        <div class="facts">
+          <div class="fact rise d2"><div class="k">Считал</div><div>В двух проверках выше <span class="accent">43 правила</span>. Модель нужна ровно в шести — там, где требуется смысл: письмо написано нам или разослано всем, есть ли в опыте результат. Остальные 37 — обычный код.</div></div>
+          <div class="fact rise d2"><div class="k">Почему так</div><div>Код не берёт денег за прогон, отвечает мгновенно и всегда одинаково. Его можно запускать каждый час и показать человеку, почему он так решил. Модель ничего из этого не умеет.</div></div>
+          <div class="fact rise d2"><div class="k">Проверьте сами</div><div>Подставьте свои числа справа. Цену обращения возьмите свою — я её не выдумываю.</div></div>
+        </div>
+      </div>
+
+      <div class="calc rise d1">
+        <div class="c-row">
+          <label for="c-n">Записей проверяем</label>
+          <input id="c-n" type="number" min="1" step="100" value="3000">
+        </div>
+        <div class="c-row">
+          <label for="c-d">Раз в месяц</label>
+          <input id="c-d" type="number" min="1" step="1" value="30">
+        </div>
+        <div class="c-row">
+          <label for="c-p">Цена обращения к модели, ₽</label>
+          <input id="c-p" type="number" min="0" step="0.1" value="0.5">
+        </div>
+        <div class="c-out">
+          <div class="c-line bad">
+            <span class="c-k">Если гнать всё через модель</span>
+            <b id="c-was">—</b>
+            <em id="c-was-n">—</em>
+          </div>
+          <div class="c-line good">
+            <span class="c-k">Проверка каталога, как я её сделал</span>
+            <b>0 ₽</b>
+            <em>ноль обращений к модели</em>
+          </div>
+        </div>
+        <p class="c-note">Проверка адресов не обращается к модели ни разу: сравнение названия с адресом — обычный код. Там, где смысл всё-таки нужен, модель зовётся только для тех записей, что прошли жёсткие проверки.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ================= как работаю ================= -->
 <section class="panel deep" id="how" data-dot="Как работаю">
   <div class="inner">
@@ -379,7 +454,7 @@ p{margin:0}
       </div>
       <div class="how rise d2">
         <h3>Нейросеть — не везде</h3>
-        <p class="soft">Из 17 критериев разбора откликов 14 считает обычный код. Он дешевле, быстрее и всегда даёт один и тот же ответ, который можно показать человеку и объяснить. Модель нужна там, где нужен смысл: письмо написано под нас или разослано всем подряд.</p>
+        <p class="soft">В двух проверках выше 43 правила, модель нужна в шести. Каждое обращение к ней — деньги заказчика, причём каждый месяц заново. Обычный код берёт ноль, отвечает мгновенно и всегда одинаково — а ещё его решение можно показать человеку и объяснить. Модель зову последней, когда без смысла действительно не обойтись.</p>
       </div>
       <div class="how rise d3">
         <h3>Отменяю своё решение, если оно не работает</h3>
@@ -506,6 +581,38 @@ document.getElementById("v-close").addEventListener("click", closeWork);
 addEventListener("keydown", function(e){
   if(e.key === "Escape" && viewer.classList.contains("on")) closeWork();
 });
+
+/* ---- расчёт расходов на модель ---- */
+(function calc(){
+  var n = document.getElementById("c-n"),
+      d = document.getElementById("c-d"),
+      pr = document.getElementById("c-p"),
+      was = document.getElementById("c-was"),
+      wasN = document.getElementById("c-was-n");
+  if(!n) return;
+  var money = new Intl.NumberFormat("ru-RU", {maximumFractionDigits:0});
+
+  function num(el, fallback){
+    var v = parseFloat(el.value);
+    return (isNaN(v) || v < 0) ? fallback : v;
+  }
+  function draw(){
+    var calls = Math.round(num(n, 0) * num(d, 0));
+    var sum = calls * num(pr, 0);
+    was.textContent = money.format(Math.round(sum)) + " ₽";
+    wasN.textContent = money.format(calls) + " " + plural(calls, ["обращение","обращения","обращений"]) + " в месяц";
+  }
+  // Русский счёт: 1 обращение, 2 обращения, 5 обращений.
+  function plural(k, f){
+    var a = Math.abs(k) % 100, b = a % 10;
+    if(a > 10 && a < 20) return f[2];
+    if(b > 1 && b < 5) return f[1];
+    if(b === 1) return f[0];
+    return f[2];
+  }
+  [n, d, pr].forEach(function(el){ el.addEventListener("input", draw); });
+  draw();
+})();
 
 /* ---- точки-указатели ---- */
 var panels = [].slice.call(document.querySelectorAll(".panel"));
