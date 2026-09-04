@@ -34,8 +34,11 @@ img{max-width:100%; display:block}
 .panel{
   position:relative;
   display:flex; flex-direction:column; justify-content:center;
-  padding:clamp(78px,9vw,124px) 0; overflow:hidden;
+  padding:clamp(96px,12vw,168px) 0; overflow:hidden;
 }
+/* Соседние тёмные экраны почти не отличаются оттенком — разделяем чертой. */
+.panel + .panel{border-top:1px solid rgba(255,255,255,.08)}
+.panel.light + .panel, .panel + .panel.light{border-top-color:rgba(0,0,0,.10)}
 .panel.light{background:var(--white); color:var(--dark-ink)}
 .panel.dark{background:var(--black); color:var(--light-ink)}
 .panel.deep{background:var(--near); color:var(--light-ink)}
@@ -532,11 +535,12 @@ p{margin:0}
     <p class="eyebrow rise">Чем собираю</p>
     <h2 class="mid rise d1">С чем работаю</h2>
     <p class="lede soft rise d2" style="margin-top:18px;max-width:46ch">Список открытый: нужен незнакомый сервис — разберусь и сделаю.</p>
-    <div class="kit rise d2">
+    <div class="kit rise d2" style="margin-bottom:8px">
       <span>Claude Code</span><span>JavaScript</span><span>React + Vite</span><span>Capacitor</span>
       <span>Supabase</span><span>PHP</span><span>Firebase</span><span>API и webhooks</span>
       <span>JSON</span><span>Git</span><span>GitHub Pages</span>
     </div>
+    <a class="next rise d3" href="#call">Связаться <span class="down">↓</span></a>
   </div>
 </section>
 
