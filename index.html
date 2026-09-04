@@ -259,21 +259,18 @@ p{margin:0}
 .tag.free{color:var(--sig)}
 .tag.part{color:var(--warn)}
 
-/* Разбор: подписи спокойные, цветом отмечены только беда и решение.
-   Раньше кричали все три строки сразу и карточка не читалась. */
-.card .rows{display:grid; gap:18px; margin-bottom:24px}
-.card .r{padding-left:0}
+/* Три строки: только вертикальная черта цветом, без пастельных заливок. */
+.card .rows{display:grid; gap:16px; margin-bottom:22px}
+.card .r{padding-left:14px; border-left:2px solid currentColor}
 .card .r b{
-  display:block; font-size:12px; font-weight:600; letter-spacing:0;
-  color:#71787F; margin-bottom:4px;
+  display:block; font-size:10px; font-weight:700; letter-spacing:.16em;
+  text-transform:uppercase; margin-bottom:5px;
 }
-.card .r span{display:block; font-size:14.5px; line-height:1.52; color:#C5CBD3}
-.card .r.bad, .card .r.fix{padding-left:14px; border-left:2px solid currentColor}
+.card .r span{display:block; font-size:14px; line-height:1.5; color:#B7BDC5}
+.card .r.find{color:#5C646E}
 .card .r.bad{color:var(--alarm)}
 .card .r.fix{color:var(--sig)}
-.card .r.bad b{color:var(--alarm)}
-.card .r.fix b{color:var(--sig)}
-.card .r.info{padding-left:14px; border-left:2px solid #6E6E73}
+.card .r.info{color:#8A7BD6}
 
 .card .btns{margin-top:auto; padding-top:2px; gap:10px}
 .card .cta{
@@ -282,10 +279,9 @@ p{margin:0}
 }
 .card .cta:hover{background:#E6E8EC; border-color:#E6E8EC; transform:none}
 .card .cta.ghost{
-  background:transparent; color:#8A9199; border:none; padding:10px 6px;
-  text-decoration:underline; text-underline-offset:3px;
+  background:transparent; color:#C2C8D0; border:1px solid rgba(255,255,255,.20);
 }
-.card .cta.ghost:hover{background:transparent; color:#fff; border:none}
+.card .cta.ghost:hover{background:transparent; color:#fff; border-color:rgba(255,255,255,.45)}
 
 /* ---------- расчёт ---------- */
 .calc{background:var(--deep); border:1px solid rgba(255,255,255,.1); border-radius:22px; padding:26px 24px 24px}
@@ -661,8 +657,8 @@ var WORKS = [
   {
     cat:"check", chip:"Проверка каталога",
     title:"Адрес страницы не совпадает с названием товара",
-    stats:[["5","товаров открыл"],["2","вели не туда"],["0","запросов к нейросети"]],
-    tag:null,
+    stats:[["5","товаров открыл"],["2","вели не туда"],["0 ₽","цена прогона"]],
+    tag:["free","Ни одного обращения к нейросети"],
     rows:[
       ["find","Нашёл","«Старт 3.0» лежит по адресу start_2_0, «Соло» — по адресу fmt02_06."],
       ["bad","Чем грозит","Покупатель ищет новую модель, попадает на старую страницу и уходит. Реклама оплачена, покупки нет."],
@@ -674,7 +670,7 @@ var WORKS = [
     cat:"check", chip:"Проверка карточек",
     title:"Проверка записана в договоре, но её никто не делает",
     stats:[["26","проверок внутри"],["23","без нейросети"],["2.3.18","пункт договора"]],
-    tag:null,
+    tag:["part","Нейросеть нужна в 3 проверках из 26"],
     rows:[
       ["find","Нашёл","В публичном договоре: карточки нужно проверять на полноту каждую неделю. Руками это делать некому."],
       ["bad","Чем грозит","Неполная карточка — тур, который не купили, потому что не поняли, что входит в цену."],
@@ -686,7 +682,7 @@ var WORKS = [
     cat:"check", chip:"Разбор откликов",
     title:"Сортировка откликов без ручного чтения",
     stats:[["17","проверок внутри"],["14","без нейросети"],["0 ₽","за доступ"]],
-    tag:null,
+    tag:["part","Нейросеть нужна в 3 проверках из 17"],
     rows:[
       ["find","Нашёл","В инструкции к сервису написано: разбирать уже пришедшие отклики можно без платного доступа к базе резюме."],
       ["bad","Чем грозит","Рекрутер читает всё подряд. Сильный кандидат ждёт в общей куче и уходит к тому, кто ответил раньше."],
@@ -697,8 +693,8 @@ var WORKS = [
   {
     cat:"check", chip:"Отчёты по продажам",
     title:"Никто не видел, кто должен был позвонить снова",
-    stats:[["0","отчётов было"],["4","экрана стало"],["0","запросов к нейросети"]],
-    tag:null,
+    stats:[["0","отчётов было"],["4","экрана стало"],["0 ₽","цена прогона"]],
+    tag:["free","Ни одного обращения к нейросети"],
     rows:[
       ["find","Нашёл","CRM нет, сделки живут в головах и переписке. Клиент с годовым циклом закупки теряется."],
       ["bad","Чем грозит","Постоянный покупатель уходит к конкуренту не потому, что там дешевле, а потому что там позвонили первыми."],
@@ -709,8 +705,8 @@ var WORKS = [
   {
     cat:"app", chip:"Сделал по своей инициативе",
     title:"Трекер кандидатов: от «едет» до табеля",
-    stats:[["6","статусов пути"],["3","вида отъезда"],["0","запросов к нейросети"]],
-    tag:null,
+    stats:[["6","статусов пути"],["3","вида отъезда"],["Excel","табель одной кнопкой"]],
+    tag:["free","Ни одного обращения к нейросети"],
     rows:[
       ["find","Почему взялся","Никто не просил. Я работал в компании и видел, что без такой системы люди и дни теряются, — и сделал её сам."],
       ["bad","Чем грозит","Пока это живёт в переписке и таблицах, кандидат теряется по дороге, а табель считают руками — и платят с ошибками."],
