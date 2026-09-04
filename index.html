@@ -220,20 +220,57 @@ p{margin:0}
 @media(max-width:880px){.cards{grid-template-columns:1fr}}
 .card{
   background:#0E1013; border:1px solid rgba(255,255,255,.09); border-radius:18px;
-  padding:26px 24px 22px; display:flex; flex-direction:column;
-  transition:border-color .35s var(--ease), transform .35s var(--ease);
+  transition:border-color .35s var(--ease), transform .35s var(--ease),
+             background .35s var(--ease);
 }
-.card:hover{border-color:rgba(255,255,255,.22); transform:translateY(-3px)}
+.card:hover{border-color:rgba(255,255,255,.26); transform:translateY(-3px)}
 .card.hide{display:none}
+/* Раскрытая карточка занимает всю ширину: содержимого много,
+   в половине колонки оно снова превратится в кашу. */
+.card.open{grid-column:1 / -1; background:#101317; border-color:rgba(255,255,255,.20)}
+.card.open:hover{transform:none}
 
+.card-head{
+  width:100%; display:flex; align-items:flex-start; gap:18px; text-align:left;
+  background:none; border:none; cursor:pointer; font-family:var(--sans);
+  padding:24px 22px 24px 24px; color:inherit;
+}
+.head-txt{flex:1}
 .chip{
-  font-size:10.5px; font-weight:600; letter-spacing:.14em; text-transform:uppercase;
-  color:#6E7681; margin-bottom:14px; align-self:flex-start;
+  display:block; font-size:10.5px; font-weight:600; letter-spacing:.14em;
+  text-transform:uppercase; color:#6E7681; margin-bottom:10px;
+  transition:color .3s;
 }
+.card:hover .chip,.card.open .chip{color:var(--sig)}
 .card h3{
-  font-size:22px; font-weight:600; letter-spacing:-.03em; line-height:1.2;
-  color:#F2F4F7; margin-bottom:22px;
+  font-size:21px; font-weight:600; letter-spacing:-.03em; line-height:1.25;
+  color:#F2F4F7; margin:0;
 }
+/* Плюс превращается в крестик поворотом — понятно без подписи. */
+.plus{
+  position:relative; flex:none; width:26px; height:26px; margin-top:2px;
+  border:1px solid rgba(255,255,255,.22); border-radius:50%;
+  transition:transform .4s var(--ease), border-color .3s, background .3s;
+}
+.plus::before,.plus::after{
+  content:""; position:absolute; left:50%; top:50%; background:#C2C8D0;
+  transform:translate(-50%,-50%); transition:background .3s;
+}
+.plus::before{width:11px; height:1.5px}
+.plus::after{width:1.5px; height:11px}
+.card:hover .plus{border-color:rgba(255,255,255,.5)}
+.card.open .plus{transform:rotate(135deg); border-color:var(--sig); background:rgba(0,224,138,.12)}
+.card.open .plus::before,.card.open .plus::after{background:var(--sig)}
+
+/* Раскрытие: строка сетки растёт от нуля до содержимого — без рывков. */
+.card-body{display:grid; grid-template-rows:0fr; transition:grid-template-rows .55s var(--ease)}
+.card.open .card-body{grid-template-rows:1fr}
+.card-body > div{overflow:hidden}
+.card-inner{
+  padding:0 24px 24px; opacity:0; transform:translateY(10px);
+  transition:opacity .4s .12s var(--ease), transform .45s .12s var(--ease);
+}
+.card.open .card-inner{opacity:1; transform:none}
 
 /* Цифры: белые, крупные, без коробок — только тонкие линии. */
 .stats{
@@ -777,10 +814,22 @@ var CATS = [
     var c = el("div", "card rise");
     c.dataset.cat = w.cat;
 
-    c.appendChild(el("span", "chip " + w.cat, w.chip));
-    c.appendChild(el("h3", null, w.title));
+    // Свёрнутый вид — только название. Всё остальное живёт внутри и
+    // раскрывается по нажатию: семь развёрнутых карточек читать невозможно.
+    var head = el("button", "card-head");
+    head.type = "button";
+    head.setAttribute("aria-expanded", "false");
+    var txt = el("span", "head-txt");
+    txt.appendChild(el("span", "chip " + w.cat, w.chip));
+    txt.appendChild(el("h3", null, w.title));
+    head.appendChild(txt);
+    head.appendChild(el("span", "plus"));
+    c.appendChild(head);
 
-    // Полоса цифр — первое, что видит человек, который читает по диагонали.
+    var body = el("div", "card-body");
+    var clip = el("div");
+    var inner = el("div", "card-inner");
+
     var strip = el("div", "stats");
     w.stats.forEach(function(s){
       var d = el("div", "stat");
@@ -788,9 +837,9 @@ var CATS = [
       d.appendChild(el("span", null, s[1]));
       strip.appendChild(d);
     });
-    c.appendChild(strip);
+    inner.appendChild(strip);
 
-    if(w.tag) c.appendChild(el("span", "tag " + w.tag[0], w.tag[1]));
+    if(w.tag) inner.appendChild(el("span", "tag " + w.tag[0], w.tag[1]));
 
     var rows = el("div", "rows");
     w.rows.forEach(function(r){
@@ -799,7 +848,7 @@ var CATS = [
       d.appendChild(el("span", null, r[2]));
       rows.appendChild(d);
     });
-    c.appendChild(rows);
+    inner.appendChild(rows);
 
     var btns = el("div", "btns");
     var open = el("button", "cta", "Открыть здесь");
@@ -808,7 +857,16 @@ var CATS = [
     var tab = el("a", "cta ghost", "В новой вкладке");
     tab.href = w.url; tab.target = "_blank"; tab.rel = "noopener";
     btns.appendChild(open); btns.appendChild(tab);
-    c.appendChild(btns);
+    inner.appendChild(btns);
+
+    clip.appendChild(inner);
+    body.appendChild(clip);
+    c.appendChild(body);
+
+    head.addEventListener("click", function(){
+      var isOpen = c.classList.toggle("open");
+      head.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    });
 
     box.appendChild(c);
   });
