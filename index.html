@@ -32,9 +32,9 @@ img{max-width:100%; display:block}
 
 /* ---------- панели ---------- */
 .panel{
-  position:relative; min-height:100vh; min-height:100svh;
+  position:relative;
   display:flex; flex-direction:column; justify-content:center;
-  padding:112px 0 96px; overflow:hidden;
+  padding:clamp(78px,9vw,124px) 0; overflow:hidden;
 }
 .panel.light{background:var(--white); color:var(--dark-ink)}
 .panel.dark{background:var(--black); color:var(--light-ink)}
@@ -94,7 +94,7 @@ p{margin:0}
 
 /* ---------- первый экран ---------- */
 .hero{justify-content:center; text-align:center; align-items:center;
-  min-height:auto; padding:104px 0 78px}
+  padding:88px 0 64px}
 .hero .inner{display:flex; flex-direction:column; align-items:center}
 .face{
   width:82px; height:82px; border-radius:50%; overflow:hidden; margin-bottom:22px;
@@ -107,6 +107,17 @@ p{margin:0}
 .hero .pre{margin:0 auto 12px; text-align:center; max-width:40ch}
 .hero .big{font-size:clamp(25px,3.9vw,42px); line-height:1.14; max-width:26ch; margin:0 auto}
 .hero .cta{margin-top:28px}
+/* Опора под первым экраном: без неё текст висел в пустоте. */
+.quick{
+  display:grid; grid-template-columns:repeat(3,auto); gap:0 clamp(26px,5vw,64px);
+  margin-top:52px; padding-top:26px; border-top:1px solid rgba(255,255,255,.11);
+}
+@media(max-width:620px){
+  .quick{grid-template-columns:1fr; gap:18px; justify-items:center}
+  .quick div + div{padding-top:16px; border-top:1px solid rgba(255,255,255,.09); width:100%}
+}
+.quick b{display:block; font-size:26px; font-weight:600; letter-spacing:-.035em; color:#fff}
+.quick span{display:block; font-size:12.5px; line-height:1.35; color:#71787F; margin-top:6px}
 .hero .lede{margin:20px auto 0; max-width:38ch; color:var(--light-dim); text-align:center}
 .cta{
   display:inline-flex; align-items:center; gap:9px; margin-top:38px;
@@ -365,6 +376,11 @@ p{margin:0}
     <h1 class="big rise d1">Занимаюсь созданием сайтов, приложений и ботов, которые экономят компании время и деньги.</h1>
     <p class="lede rise d2">Много лет работаю в продажах. Знаю эту работу изнутри — и создаю не то, что красиво выглядит, а то, чем потом пользуются каждый день.</p>
     <a class="cta rise d3" href="#about">Рассказать о себе</a>
+    <div class="quick rise d3">
+      <div><b>7</b><span>работ, которые<br>можно открыть здесь</span></div>
+      <div><b>150+</b><span>человек пользуются<br>моим приложением</span></div>
+      <div><b>Ижевск</b><span>работаю<br>удалённо</span></div>
+    </div>
   </div>
 </section>
 
