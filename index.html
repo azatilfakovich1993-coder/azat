@@ -375,14 +375,30 @@ p{margin:0}
 .dark .kit span,.deep .kit span{border-color:rgba(255,255,255,.14); color:var(--light-ink)}
 
 /* ---------- контакты ---------- */
-.links{display:flex; flex-wrap:wrap; gap:14px; justify-content:center; margin-top:34px}
-.links a{
-  font-size:16px; font-weight:500; color:var(--sig); text-decoration:none;
-  border:1px solid rgba(0,224,138,.4); border-radius:980px; padding:11px 22px;
-  transition:background .2s;
+/* Раньше были зелёные «таблетки» — выглядели дёшево. Теперь список:
+   подпись, значение, стрелка. Разделители тонкой чертой. */
+.links{
+  display:grid; gap:0; margin:36px auto 0; max-width:520px; width:100%;
+  text-align:left; border-top:1px solid var(--fline);
 }
-.links a:hover{background:rgba(0,224,138,.12)}
-.links .none{font-size:15px; color:var(--light-dim)}
+.links a{
+  display:grid; grid-template-columns:104px 1fr auto; align-items:center; gap:16px;
+  padding:16px 4px; text-decoration:none; color:inherit;
+  border-bottom:1px solid var(--fline);
+  transition:padding .3s var(--ease);
+}
+.links a:hover{padding-left:12px}
+.links .c-k{font-size:13px; color:var(--fdim)}
+.links .c-v{font-size:16.5px; font-weight:500; color:var(--ffg); word-break:break-all}
+.links .c-go{font-size:16px; color:var(--fdim); transition:transform .3s var(--ease), color .3s}
+.links a:hover .c-go{transform:translateX(4px); color:var(--sig)}
+@media(max-width:520px){
+  .links a{grid-template-columns:1fr auto; gap:2px 12px}
+  .links .c-k{grid-column:1; font-size:12px}
+  .links .c-v{grid-column:1}
+  .links .c-go{grid-column:2; grid-row:1 / span 2}
+}
+.links .none{font-size:15px; color:var(--fdim)}
 .tail{margin-top:58px; font-size:12.5px; color:#5B5B60; max-width:60ch; line-height:1.6}
 
 /* ---------- просмотр во весь экран ---------- */
@@ -580,24 +596,38 @@ var CONTACT = {
 };
 
 (function contacts(){
-  var box = document.getElementById("links"), rows = [];
+  var box = document.getElementById("links");
   var tg = CONTACT.tg.replace(/^@/, "");
-  if(tg)            rows.push(["https://t.me/" + tg, "Telegram @" + tg]);
-  if(CONTACT.phone) rows.push(["tel:" + CONTACT.phone.replace(/[^\d+]/g, ""), CONTACT.phone]);
-  if(CONTACT.mail)  rows.push(["mailto:" + CONTACT.mail, CONTACT.mail]);
-  if(CONTACT.gh)    rows.push(["https://github.com/" + CONTACT.gh, "GitHub"]);
-  rows.forEach(function(r){
-    var a = document.createElement("a");
-    a.href = r[0]; a.textContent = r[1];
-    if(r[0].indexOf("http") === 0){ a.target = "_blank"; a.rel = "noopener"; }
-    box.appendChild(a);
-  });
-  if(!tg && !CONTACT.phone && !CONTACT.mail){
+  var rows = [];
+  if(tg)            rows.push(["Telegram", "@" + tg, "https://t.me/" + tg]);
+  if(CONTACT.phone) rows.push(["Телефон", CONTACT.phone, "tel:" + CONTACT.phone.replace(/[^\d+]/g, "")]);
+  if(CONTACT.mail)  rows.push(["Почта", CONTACT.mail, "mailto:" + CONTACT.mail]);
+  if(CONTACT.gh)    rows.push(["GitHub", "github.com/" + CONTACT.gh, "https://github.com/" + CONTACT.gh]);
+
+  if(!rows.length){
     var s = document.createElement("span");
     s.className = "none";
     s.textContent = "Здесь будут телефон и Telegram.";
     box.appendChild(s);
+    return;
   }
+
+  rows.forEach(function(r){
+    var a = document.createElement("a");
+    a.href = r[2];
+    if(r[2].indexOf("http") === 0){ a.target = "_blank"; a.rel = "noopener"; }
+    var k = document.createElement("span");
+    k.className = "c-k";
+    k.textContent = r[0];
+    var v = document.createElement("span");
+    v.className = "c-v";
+    v.textContent = r[1];
+    var g = document.createElement("span");
+    g.className = "c-go";
+    g.textContent = "→";
+    a.appendChild(k); a.appendChild(v); a.appendChild(g);
+    box.appendChild(a);
+  });
 })();
 
 /* Фотография подставляется, только если файл есть — иначе остаётся кружок
