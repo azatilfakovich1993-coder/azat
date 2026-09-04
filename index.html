@@ -52,11 +52,15 @@ p{margin:0}
   font-size:clamp(17px,2.1vw,23px); font-weight:400; line-height:1.45;
   letter-spacing:-.01em; max-width:34ch;
 }
+/* Надзаголовок: раньше терялся серым по чёрному. Теперь сигнальный цвет
+   и короткая черта — глаз цепляется, но с заголовком не спорит. */
 .eyebrow{
-  font-size:13px; font-weight:600; letter-spacing:.02em; text-transform:none;
-  margin-bottom:16px;
+  display:inline-flex; align-items:center; gap:10px;
+  font-size:14px; font-weight:600; letter-spacing:.03em;
+  margin-bottom:20px;
 }
-.light .eyebrow{color:var(--dark-dim)} .dark .eyebrow,.deep .eyebrow{color:var(--light-dim)}
+.eyebrow::before{content:""; width:24px; height:2px; background:currentColor; flex:none}
+.light .eyebrow{color:#067A4E} .dark .eyebrow,.deep .eyebrow{color:var(--sig)}
 .light .soft{color:var(--dark-dim)} .dark .soft,.deep .soft{color:var(--light-dim)}
 .accent{color:#067A4E; font-weight:500}
 .dark .accent,.deep .accent{color:var(--sig)}
