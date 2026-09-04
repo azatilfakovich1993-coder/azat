@@ -159,32 +159,37 @@ p{margin:0}
 @media(max-width:880px){.cards{grid-template-columns:1fr}}
 .card{
   background:var(--pale); border:1px solid rgba(0,0,0,.08); border-radius:24px;
-  padding:28px 26px 26px; display:flex; flex-direction:column;
-  transition:transform .4s var(--ease), box-shadow .4s var(--ease), opacity .3s;
+  padding:26px 24px 24px; display:flex; flex-direction:column;
+  transition:transform .4s var(--ease), box-shadow .4s var(--ease);
 }
 .dark .card,.deep .card{background:var(--deep); border-color:rgba(255,255,255,.09)}
 .card:hover{transform:translateY(-4px); box-shadow:0 18px 44px rgba(0,0,0,.10)}
 .card.hide{display:none}
 .chip{
   display:inline-block; font-size:11.5px; font-weight:600; letter-spacing:.02em;
-  padding:4px 11px; border-radius:980px; margin-bottom:16px; align-self:flex-start;
+  padding:4px 11px; border-radius:980px; margin-bottom:14px; align-self:flex-start;
 }
 .chip.check{background:rgba(41,151,255,.14); color:#1B79D6}
 .chip.app{background:rgba(150,120,255,.16); color:#6B52C4}
 .dark .chip.check,.deep .chip.check{color:#7FBEFF}
 .dark .chip.app,.deep .chip.app{color:#B9A6FF}
+.card h3{font-size:21px; font-weight:600; letter-spacing:-.025em; line-height:1.22; margin-bottom:20px}
 
-.card .fig{font-size:clamp(38px,4.6vw,54px); font-weight:600; letter-spacing:-.045em;
-  line-height:1; font-variant-numeric:tabular-nums; margin-bottom:8px}
-.card .fig-n{font-size:13px; margin-bottom:20px; line-height:1.4}
-.light .card .fig-n{color:var(--dark-dim)} .dark .card .fig-n,.deep .card .fig-n{color:var(--light-dim)}
-.card h3{font-size:21px; font-weight:600; letter-spacing:-.025em; line-height:1.2; margin-bottom:16px}
-.card .rows{display:grid; gap:12px; margin-bottom:18px}
-.card .r{font-size:14.5px; line-height:1.5}
-.card .r b{display:block; font-size:11.5px; font-weight:600; margin-bottom:2px}
-.light .card .r b{color:var(--dark-dim)} .dark .card .r b,.deep .card .r b{color:var(--light-dim)}
+/* Полоса цифр: то, ради чего страницу и открывают. */
+.stats{
+  display:grid; grid-template-columns:repeat(3,1fr); gap:1px; margin-bottom:18px;
+  background:rgba(0,0,0,.09); border:1px solid rgba(0,0,0,.09); border-radius:16px; overflow:hidden;
+}
+.dark .stats,.deep .stats{background:rgba(255,255,255,.10); border-color:rgba(255,255,255,.10)}
+.stat{background:var(--pale); padding:14px 12px 13px; text-align:center}
+.dark .stat,.deep .stat{background:var(--deep)}
+.stat b{
+  display:block; font-size:clamp(22px,2.6vw,29px); font-weight:600; letter-spacing:-.035em;
+  line-height:1.05; font-variant-numeric:tabular-nums; color:var(--blue);
+}
+.stat span{display:block; font-size:11.5px; line-height:1.32; margin-top:5px}
+.light .stat span{color:var(--dark-dim)} .dark .stat span,.deep .stat span{color:var(--light-dim)}
 
-/* Метка про расход на нейросеть — главный сигнал страницы, поэтому у неё свой цвет. */
 .tag{
   display:inline-flex; align-items:center; gap:7px; align-self:flex-start;
   font-size:13px; font-weight:600; padding:8px 14px; border-radius:12px; margin-bottom:18px;
@@ -194,10 +199,30 @@ p{margin:0}
 .tag.part{background:rgba(255,159,10,.15); color:#9A6205}
 .dark .tag.free,.deep .tag.free{background:rgba(78,209,127,.13); color:#5FD98D}
 .dark .tag.part,.deep .tag.part{background:rgba(255,183,77,.13); color:#E0A94D}
-.card .btns{margin-top:auto; padding-top:6px}
+
+/* Три строки разбора: каждая своего цвета, чтобы не сливались в текст. */
+.card .rows{display:grid; gap:10px; margin-bottom:20px}
+.card .r{
+  font-size:14px; line-height:1.5; padding:11px 14px 12px;
+  border-left:3px solid currentColor; border-radius:0 12px 12px 0;
+}
+.card .r b{
+  display:block; font-size:11px; font-weight:700; letter-spacing:.06em;
+  text-transform:uppercase; margin-bottom:3px;
+}
+.card .r span{display:block}
+.light .card .r span{color:var(--dark-ink)} .dark .card .r span,.deep .card .r span{color:var(--light-ink)}
+.card .r.find{color:#1B79D6; background:rgba(41,151,255,.08)}
+.card .r.bad{color:#C0392B; background:rgba(220,80,60,.09)}
+.card .r.fix{color:#1E8F52; background:rgba(52,199,123,.10)}
+.card .r.info{color:#6B52C4; background:rgba(150,120,255,.10)}
+.dark .card .r.find,.deep .card .r.find{color:#7FBEFF; background:rgba(41,151,255,.10)}
+.dark .card .r.bad,.deep .card .r.bad{color:#FF8B7A; background:rgba(255,107,90,.11)}
+.dark .card .r.fix,.deep .card .r.fix{color:#5FD98D; background:rgba(78,209,127,.10)}
+.dark .card .r.info,.deep .card .r.info{color:#B9A6FF; background:rgba(150,120,255,.12)}
+
+.card .btns{margin-top:auto; padding-top:4px}
 .card .cta{font-size:15px; padding:11px 21px}
-.free-ink{color:#1E8F52; font-weight:500}
-.dark .free-ink,.deep .free-ink{color:#5FD98D}
 
 /* ---------- расчёт ---------- */
 .calc{background:var(--deep); border:1px solid rgba(255,255,255,.1); border-radius:22px; padding:26px 24px 24px}
@@ -530,78 +555,78 @@ addEventListener("keydown", function(e){
 });
 
 /* ---- работы карточками ----
-   Всё в одном списке: и текст, и разряд, и метка про расход на модель.
-   Правится в одном месте, разметка собирается отсюда. */
+   Всё в одном списке: цифры, три строки разбора и метка про расход на модель.
+   stats — только настоящие числа из самой работы, ничего придуманного. */
 var WORKS = [
   {
-    cat:"check", chip:"Проверка",
-    fig:"2 из 5", fign:"товаров, которые я открыл, вели покупателя не туда",
+    cat:"check", chip:"Проверка каталога",
     title:"Адрес страницы не совпадает с названием товара",
+    stats:[["5","товаров открыл"],["2","вели не туда"],["0 ₽","цена прогона"]],
     tag:["free","Ни одного обращения к нейросети"],
     rows:[
-      ["Нашёл","Товар «Старт 3.0» лежит по адресу start_2_0, «Соло» — по адресу fmt02_06."],
-      ["Чем плохо","Человек ищет в поиске новую модель, попадает на страницу со старым адресом и уходит. Реклама на такой товар оплачена, а покупка не случилась."],
-      ["Сделал","Проверку, которая проходит весь каталог по карте сайта и присылает список расхождений. Прогон ничего не стоит, запускать можно хоть каждый день."]
+      ["find","Нашёл","«Старт 3.0» лежит по адресу start_2_0, «Соло» — по адресу fmt02_06."],
+      ["bad","Чем грозит","Покупатель ищет новую модель, попадает на старую страницу и уходит. Реклама оплачена, покупки нет."],
+      ["fix","Сделал","Проверку всего каталога по карте сайта. Запускать можно хоть каждый день — прогон бесплатный."]
     ],
     url:"https://azatilfakovich1993-coder.github.io/ergostol-check/", ut:"Проверка каталога"
   },
   {
-    cat:"check", chip:"Проверка",
-    fig:"2.3.18", fign:"пункт их же договора, который никто не выполняет",
+    cat:"check", chip:"Проверка карточек",
     title:"Проверка записана в договоре, но её никто не делает",
+    stats:[["26","правил в проверке"],["23","без нейросети"],["2.3.18","пункт договора"]],
     tag:["part","Модель нужна в 3 правилах из 26"],
     rows:[
-      ["Нашёл","В публичном договоре прямо сказано: карточки нужно еженедельно проверять на полноту. Руками это делать некому — значит не делается."],
-      ["Чем плохо","Неполная карточка — это тур, который человек не купил, потому что не понял, что входит в цену."],
-      ["Сделал","Проверку по 26 правилам, выведенным из этого же договора. Пороги правятся на странице, можно добавлять свои."]
+      ["find","Нашёл","В публичном договоре: карточки нужно проверять на полноту каждую неделю. Руками это делать некому."],
+      ["bad","Чем грозит","Неполная карточка — тур, который не купили, потому что не поняли, что входит в цену."],
+      ["fix","Сделал","Проверку по 26 правилам из этого же договора. Пороги правятся на странице, можно добавить свои."]
     ],
     url:"https://azatilfakovich1993-coder.github.io/yarko-check/", ut:"Проверка карточек туров"
   },
   {
-    cat:"check", chip:"Проверка",
-    fig:"0 ₽", fign:"стоит доступ, за который собирались платить",
-    title:"Разбор откликов без ручной сортировки",
+    cat:"check", chip:"Разбор откликов",
+    title:"Сортировка откликов без ручного чтения",
+    stats:[["17","критериев отбора"],["14","без нейросети"],["0 ₽","за доступ"]],
     tag:["part","Модель нужна в 3 правилах из 17"],
     rows:[
-      ["Нашёл","В документации сервиса: чтобы разбирать уже пришедшие отклики, платный доступ к базе резюме не нужен. Он нужен только чтобы самому искать людей."],
-      ["Чем плохо","Без разбора рекрутер читает всё подряд. Сильный кандидат ждёт в общей куче и уходит к тому, кто ответил быстрее."],
-      ["Сделал","Разбор на три стопки: смотреть первым, под вопросом, отказ. Пороги меняются прямо на странице."]
+      ["find","Нашёл","В документации сервиса: разбирать пришедшие отклики можно без платного доступа к базе резюме."],
+      ["bad","Чем грозит","Рекрутер читает всё подряд. Сильный кандидат ждёт в общей куче и уходит к тому, кто ответил раньше."],
+      ["fix","Сделал","Три стопки: смотреть первым, под вопросом, отказ. Пороги меняются прямо на странице."]
     ],
     url:"https://azatilfakovich1993-coder.github.io/hh-otkliki/", ut:"Разбор откликов"
   },
   {
-    cat:"check", chip:"Отчёты",
-    fig:"0", fign:"отчётов по продажам было у директора",
+    cat:"check", chip:"Отчёты по продажам",
     title:"Никто не видел, кто должен был позвонить снова",
+    stats:[["0","отчётов было"],["4","экрана стало"],["0 ₽","цена прогона"]],
     tag:["free","Ни одного обращения к нейросети"],
     rows:[
-      ["Нашёл","CRM нет, сделки живут в головах и переписке. Клиент с годовым циклом закупки просто теряется — вспомнить о нём некому."],
-      ["Чем плохо","Постоянный покупатель уходит к конкуренту не потому, что там дешевле, а потому что там позвонили первыми."],
-      ["Сделал","Четыре экрана: кому звонить сегодня, сделки, карточка клиента и расчёт цены к тендеру с коридором — ниже работаем в минус, выше теряем преимущество."]
+      ["find","Нашёл","CRM нет, сделки живут в головах и переписке. Клиент с годовым циклом закупки теряется."],
+      ["bad","Чем грозит","Постоянный покупатель уходит к конкуренту не потому, что там дешевле, а потому что там позвонили первыми."],
+      ["fix","Сделал","Кому звонить сегодня, сделки, карточка клиента и расчёт цены с коридором: ниже — в минус, выше — теряем преимущество."]
     ],
     url:"https://azatilfakovich1993-coder.github.io/omega-tender/", ut:"Отчёты по продажам"
   },
   {
     cat:"app", chip:"Приложение на заказ",
-    fig:"150+", fign:"человек пользуются приложением сейчас",
     title:"Приложение для мусульман: Android и веб",
+    stats:[["150+","человек пользуются"],["2","площадки: магазин и веб"],["14/7/1","дней предупреждает сторож"]],
     tag:null,
     rows:[
-      ["Задача","Сделать на заказ приложение с временами намаза, Кораном с аудио, чатом и обучением арабскому алфавиту."],
-      ["Сделал","От первой строки до выкладки в магазин. Один код работает и сайтом, и приложением на Android."],
-      ["Веду сам","Обновления, разбор аварий, свой прокси и сторож, который предупреждает об истечении сертификата за 14, 7 и 1 день."]
+      ["find","Задача","Времена намаза, Коран с аудио, чат и обучение арабскому алфавиту. Один код — и сайт, и приложение."],
+      ["bad","Что решал","Сервис отключил проект за перерасход трафика — вход перестал работать у всех. Перенёс тяжёлое в отдельное хранилище."],
+      ["fix","Сделал","От первой строки до выкладки в магазин. Веду сам: обновления, аварии, свой прокси и сторож по сертификату."]
     ],
     url:"https://nurhayat.ru/app", ut:"Nur Hayat"
   },
   {
     cat:"app", chip:"Своё приложение",
-    fig:"1–3 часа", fign:"столько живёт событие, потом исчезает с карты",
     title:"Что происходит прямо сейчас в пятистах метрах от меня",
+    stats:[["4","вида событий"],["1–3 ч","живёт событие"],["500 м","радиус вокруг вас"]],
     tag:null,
     rows:[
-      ["Идея","Не афиша города и не лента друзей. Карта того, что происходит рядом и скоро закончится: собирают на футбол, зовут поесть, кому-то нужна помощь."],
-      ["Как устроено","Четыре вида событий: спорт, еда, информация и SOS. Человек ставит событие на карту и выбирает, сколько оно будет видно — час, два или три. Потом оно пропадает само."],
-      ["Внутри","Карта Яндекса со сжатием близких точек в группы, геопозиция, камера, вход через VK и Telegram. Один код — и сайт, и приложение на Android."]
+      ["find","Идея","Не афиша города и не лента друзей. Карта того, что рядом и скоро закончится."],
+      ["info","Как устроено","Спорт, еда, информация и SOS. Человек ставит событие на карту и выбирает срок — час, два или три. Потом оно пропадает само."],
+      ["fix","Внутри","Карта со сжатием близких точек в группы, геопозиция, камера, вход через VK и Telegram."]
     ],
     url:"https://azatilfakovich1993.github.io/ryadom/", ut:"Рядом — живые события"
   }
@@ -633,65 +658,48 @@ var CATS = [
     fbox.appendChild(b);
   });
 
+  function el(tag, cls, txt){
+    var e = document.createElement(tag);
+    if(cls) e.className = cls;
+    if(txt != null) e.textContent = txt;
+    return e;
+  }
+
   WORKS.forEach(function(w){
-    var c = document.createElement("div");
-    c.className = "card rise";
+    var c = el("div", "card rise");
     c.dataset.cat = w.cat;
 
-    var chip = document.createElement("span");
-    chip.className = "chip " + w.cat;
-    chip.textContent = w.chip;
-    c.appendChild(chip);
+    c.appendChild(el("span", "chip " + w.cat, w.chip));
+    c.appendChild(el("h3", null, w.title));
 
-    var fig = document.createElement("div");
-    fig.className = "fig";
-    fig.textContent = w.fig;
-    c.appendChild(fig);
+    // Полоса цифр — первое, что видит человек, который читает по диагонали.
+    var strip = el("div", "stats");
+    w.stats.forEach(function(s){
+      var d = el("div", "stat");
+      d.appendChild(el("b", null, s[0]));
+      d.appendChild(el("span", null, s[1]));
+      strip.appendChild(d);
+    });
+    c.appendChild(strip);
 
-    var fn = document.createElement("div");
-    fn.className = "fig-n";
-    fn.textContent = w.fign;
-    c.appendChild(fn);
+    if(w.tag) c.appendChild(el("span", "tag " + w.tag[0], w.tag[1]));
 
-    var h = document.createElement("h3");
-    h.textContent = w.title;
-    c.appendChild(h);
-
-    if(w.tag){
-      var tg = document.createElement("span");
-      tg.className = "tag " + w.tag[0];
-      tg.textContent = w.tag[1];
-      c.appendChild(tg);
-    }
-
-    var rows = document.createElement("div");
-    rows.className = "rows";
+    var rows = el("div", "rows");
     w.rows.forEach(function(r){
-      var d = document.createElement("div");
-      d.className = "r";
-      var b = document.createElement("b");
-      b.textContent = r[0];
-      d.appendChild(b);
-      d.appendChild(document.createTextNode(r[1]));
+      var d = el("div", "r " + r[0]);
+      d.appendChild(el("b", null, r[1]));
+      d.appendChild(el("span", null, r[2]));
       rows.appendChild(d);
     });
     c.appendChild(rows);
 
-    var btns = document.createElement("div");
-    btns.className = "btns";
-    var open = document.createElement("button");
+    var btns = el("div", "btns");
+    var open = el("button", "cta", "Открыть здесь");
     open.type = "button";
-    open.className = "cta";
-    open.textContent = "Открыть здесь";
     open.addEventListener("click", function(){ openWork(w.url, w.ut); });
-    var tab = document.createElement("a");
-    tab.className = "cta ghost";
-    tab.href = w.url;
-    tab.target = "_blank";
-    tab.rel = "noopener";
-    tab.textContent = "В новой вкладке";
-    btns.appendChild(open);
-    btns.appendChild(tab);
+    var tab = el("a", "cta ghost", "В новой вкладке");
+    tab.href = w.url; tab.target = "_blank"; tab.rel = "noopener";
+    btns.appendChild(open); btns.appendChild(tab);
     c.appendChild(btns);
 
     box.appendChild(c);
