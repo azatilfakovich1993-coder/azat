@@ -141,6 +141,64 @@ p{margin:0}
 .btns{display:flex; flex-wrap:wrap; gap:12px; margin-top:34px}
 .btns .cta{margin-top:0}
 
+/* ---------- работы карточками ---------- */
+.wide{max-width:1180px}
+.filters{display:flex; flex-wrap:wrap; gap:9px; margin:30px 0 26px}
+.filters button{
+  font-family:var(--sans); font-size:14px; font-weight:500; cursor:pointer;
+  padding:9px 18px; border-radius:980px; border:1px solid rgba(0,0,0,.14);
+  background:transparent; color:var(--dark-ink); transition:.2s;
+}
+.dark .filters button,.deep .filters button{border-color:rgba(255,255,255,.18); color:var(--light-ink)}
+.filters button:hover{border-color:var(--blue)}
+.filters button[aria-pressed="true"]{background:var(--dark-ink); border-color:var(--dark-ink); color:var(--white)}
+.dark .filters button[aria-pressed="true"],.deep .filters button[aria-pressed="true"]{
+  background:var(--white); border-color:var(--white); color:var(--dark-ink)}
+
+.cards{display:grid; grid-template-columns:repeat(2,1fr); gap:20px}
+@media(max-width:880px){.cards{grid-template-columns:1fr}}
+.card{
+  background:var(--pale); border:1px solid rgba(0,0,0,.08); border-radius:24px;
+  padding:28px 26px 26px; display:flex; flex-direction:column;
+  transition:transform .4s var(--ease), box-shadow .4s var(--ease), opacity .3s;
+}
+.dark .card,.deep .card{background:var(--deep); border-color:rgba(255,255,255,.09)}
+.card:hover{transform:translateY(-4px); box-shadow:0 18px 44px rgba(0,0,0,.10)}
+.card.hide{display:none}
+.chip{
+  display:inline-block; font-size:11.5px; font-weight:600; letter-spacing:.02em;
+  padding:4px 11px; border-radius:980px; margin-bottom:16px; align-self:flex-start;
+}
+.chip.check{background:rgba(41,151,255,.14); color:#1B79D6}
+.chip.app{background:rgba(150,120,255,.16); color:#6B52C4}
+.dark .chip.check,.deep .chip.check{color:#7FBEFF}
+.dark .chip.app,.deep .chip.app{color:#B9A6FF}
+
+.card .fig{font-size:clamp(38px,4.6vw,54px); font-weight:600; letter-spacing:-.045em;
+  line-height:1; font-variant-numeric:tabular-nums; margin-bottom:8px}
+.card .fig-n{font-size:13px; margin-bottom:20px; line-height:1.4}
+.light .card .fig-n{color:var(--dark-dim)} .dark .card .fig-n,.deep .card .fig-n{color:var(--light-dim)}
+.card h3{font-size:21px; font-weight:600; letter-spacing:-.025em; line-height:1.2; margin-bottom:16px}
+.card .rows{display:grid; gap:12px; margin-bottom:18px}
+.card .r{font-size:14.5px; line-height:1.5}
+.card .r b{display:block; font-size:11.5px; font-weight:600; margin-bottom:2px}
+.light .card .r b{color:var(--dark-dim)} .dark .card .r b,.deep .card .r b{color:var(--light-dim)}
+
+/* Метка про расход на нейросеть — главный сигнал страницы, поэтому у неё свой цвет. */
+.tag{
+  display:inline-flex; align-items:center; gap:7px; align-self:flex-start;
+  font-size:13px; font-weight:600; padding:8px 14px; border-radius:12px; margin-bottom:18px;
+}
+.tag::before{content:""; width:7px; height:7px; border-radius:50%; background:currentColor}
+.tag.free{background:rgba(52,199,123,.14); color:#1E8F52}
+.tag.part{background:rgba(255,159,10,.15); color:#9A6205}
+.dark .tag.free,.deep .tag.free{background:rgba(78,209,127,.13); color:#5FD98D}
+.dark .tag.part,.deep .tag.part{background:rgba(255,183,77,.13); color:#E0A94D}
+.card .btns{margin-top:auto; padding-top:6px}
+.card .cta{font-size:15px; padding:11px 21px}
+.free-ink{color:#1E8F52; font-weight:500}
+.dark .free-ink,.deep .free-ink{color:#5FD98D}
+
 /* ---------- расчёт ---------- */
 .calc{background:var(--deep); border:1px solid rgba(255,255,255,.1); border-radius:22px; padding:26px 24px 24px}
 .light .calc{background:var(--pale); border-color:rgba(0,0,0,.08)}
@@ -243,12 +301,7 @@ p{margin:0}
 <div class="bar" id="bar"><div class="bar-in">
   <a class="me" href="#top">Азат Шарипов</a>
   <nav>
-    <a href="#w1">Каталог</a>
-    <a href="#w2">Карточки</a>
-    <a href="#w3">Отклики hh</a>
-    <a href="#w4">Отчёты</a>
-    <a href="#w5">Nur Hayat</a>
-    <a href="#w6">Рядом</a>
+    <a href="#works">Работы</a>
     <a href="#money">Деньги</a>
     <a href="#how">Как работаю</a>
     <a href="#call">Связаться</a>
@@ -272,124 +325,18 @@ p{margin:0}
 <section class="panel light" data-dot="Суть">
   <div class="inner narrow claim-wrap">
     <p class="eyebrow rise">Как это обычно выглядит</p>
-    <h2 class="big rise d1">Половину этих работ я сделал до того, как меня о чём-то попросили.</h2>
+    <h2 class="big rise d1">Часть этих работ я сделал до того, как меня о чём-то попросили.</h2>
     <p class="lede soft rise d2">Я открывал сайт компании или читал документацию сервиса — и находил место, где что-то теряется. Дальше собирал проверку, которая это ловит. Ещё два приложения — свои, от идеи до магазина. Всё, что ниже, открывается по ссылке и работает прямо сейчас.</p>
   </div>
 </section>
 
-<!-- ================= работа 1 ================= -->
-<section class="panel dark work" id="w1" data-dot="Каталог">
-  <div class="inner work-grid">
-    <div>
-      <p class="eyebrow rise">Производитель мебели · публичный каталог</p>
-      <h2 class="big rise d1">Адрес страницы не совпадает с названием товара.</h2>
-      <div class="facts">
-        <div class="fact rise d2"><div class="k">Нашёл</div><div>Товар «Старт 3.0» лежит по адресу <span class="accent">start_2_0</span>, «Соло» — по адресу fmt02_06. Поисковик читает адрес: человек ищет новую модель и попадает не туда.</div></div>
-        <div class="fact rise d2"><div class="k">Чем плохо</div><div>Человек ищет в поиске новую модель, попадает на страницу со старым адресом и уходит. Реклама на такой товар оплачена, а покупка не случилась.</div></div>
-        <div class="fact rise d2"><div class="k">Сделал</div><div>Проверку, которая проходит весь каталог по карте сайта и присылает список расхождений. <span class="accent">Ни одного обращения к нейросети</span> — значит прогон ничего не стоит и его можно запускать хоть каждый день.</div></div>
-      </div>
-      <div class="btns rise d3">
-        <button class="cta" type="button" data-open="https://azatilfakovich1993-coder.github.io/ergostol-check/" data-title="Проверка каталога">Открыть здесь</button>
-        <a class="cta ghost" href="https://azatilfakovich1993-coder.github.io/ergostol-check/" target="_blank" rel="noopener">В новой вкладке</a>
-      </div>
-    </div>
-    <div class="figure rise d1">2 из 5<em>товаров, которые я открыл, вели покупателя не туда</em></div>
-  </div>
-</section>
-
-<!-- ================= работа 2 ================= -->
-<section class="panel light work" id="w2" data-dot="Карточки">
-  <div class="inner work-grid">
-    <div class="figure rise">2.3.18<em>пункт их же оферты, который никто не выполняет</em></div>
-    <div>
-      <p class="eyebrow rise d1">Туроператор · карточки туров</p>
-      <h2 class="big rise d1">Проверка записана в договоре, но её никто не делает.</h2>
-      <div class="facts">
-        <div class="fact rise d2"><div class="k">Нашёл</div><div>В их публичной оферте прямо сказано: карточки нужно еженедельно проверять на полноту. Руками это делать некому — значит не делается.</div></div>
-        <div class="fact rise d2"><div class="k">Сделал</div><div>Проверку по 26 правилам, выведенным из этой же оферты. Пороги правятся на странице, можно добавлять свои. 23 правила из 26 работают без нейросети.</div></div>
-      </div>
-      <div class="btns rise d3">
-        <button class="cta" type="button" data-open="https://azatilfakovich1993-coder.github.io/yarko-check/" data-title="Проверка карточек туров">Открыть здесь</button>
-        <a class="cta ghost" href="https://azatilfakovich1993-coder.github.io/yarko-check/" target="_blank" rel="noopener">В новой вкладке</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= работа 3 ================= -->
-<section class="panel deep work" id="w3" data-dot="Отклики hh">
-  <div class="inner work-grid">
-    <div>
-      <p class="eyebrow rise">Кадровое агентство · разбор откликов</p>
-      <h2 class="big rise d1">Оказалось, что это ничего не стоит.</h2>
-      <div class="facts">
-        <div class="fact rise d2"><div class="k">Нашёл</div><div>В документации hh: чтобы разбирать <span class="accent">уже пришедшие отклики</span>, платный доступ к базе резюме не нужен. Он нужен только чтобы самому искать людей.</div></div>
-        <div class="fact rise d2"><div class="k">Сделал</div><div>Работающий разбор: 17 критериев, три стопки — смотреть первым, под вопросом, отказ. Пороги меняются прямо на странице, раскладка пересчитывается сразу.</div></div>
-      </div>
-      <div class="btns rise d3">
-        <button class="cta" type="button" data-open="https://azatilfakovich1993-coder.github.io/hh-otkliki/" data-title="Разбор откликов на hh">Открыть здесь</button>
-        <a class="cta ghost" href="https://azatilfakovich1993-coder.github.io/hh-otkliki/" target="_blank" rel="noopener">В новой вкладке</a>
-      </div>
-    </div>
-    <div class="figure rise d1">0 ₽<em>стоит доступ, за который собирались платить</em></div>
-  </div>
-</section>
-
-<!-- ================= работа 4 ================= -->
-<section class="panel light work" id="w4" data-dot="Производство">
-  <div class="inner work-grid">
-    <div class="figure rise">0<em>отчётов по продажам было у директора</em></div>
-    <div>
-      <p class="eyebrow rise d1">Производство · металлообработка</p>
-      <h2 class="big rise d1">Никто не видел, кто должен был позвонить снова.</h2>
-      <div class="facts">
-        <div class="fact rise d2"><div class="k">Нашёл</div><div>CRM нет, сделки живут в головах и переписке. Клиент с годовым циклом закупки просто теряется — вспомнить о нём некому.</div></div>
-        <div class="fact rise d2"><div class="k">Сделал</div><div>Четыре экрана: кому звонить сегодня, сделки, карточка клиента и расчёт цены к тендеру с коридором — ниже работаем в минус, выше теряем преимущество.</div></div>
-      </div>
-      <div class="btns rise d3">
-        <button class="cta" type="button" data-open="https://azatilfakovich1993-coder.github.io/omega-tender/" data-title="Отчёты по продажам и расчёт цены">Открыть здесь</button>
-        <a class="cta ghost" href="https://azatilfakovich1993-coder.github.io/omega-tender/" target="_blank" rel="noopener">В новой вкладке</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= работа 5 ================= -->
-<section class="panel dark work" id="w5" data-dot="Приложение">
-  <div class="inner work-grid">
-    <div>
-      <p class="eyebrow rise">Nur Hayat · Android и веб</p>
-      <h2 class="big rise d1">Приложение, которым пользуются люди.</h2>
-      <div class="facts">
-        <div class="fact rise d2"><div class="k">Есть</div><div>Лежит в RuStore и открывается в браузере. Времена намаза, Коран с аудио, чат, обучение арабскому алфавиту, push-уведомления.</div></div>
-        <div class="fact rise d2"><div class="k">Веду сам</div><div>От первой строки до выкладки в магазин, обновлений и разбора аварий. Свой прокси и сторож, который предупреждает об истечении сертификата за 14, 7 и 1 день.</div></div>
-      </div>
-      <div class="btns rise d3">
-        <button class="cta" type="button" data-open="https://nurhayat.ru/app" data-title="Nur Hayat">Открыть здесь</button>
-        <a class="cta ghost" href="https://nurhayat.ru/app" target="_blank" rel="noopener">В новой вкладке</a>
-      </div>
-    </div>
-    <div class="figure rise d1">140<em>человек пользуются, 27 заходили на этой неделе</em></div>
-  </div>
-</section>
-
-<!-- ================= работа 6 ================= -->
-<section class="panel light work" id="w6" data-dot="Рядом">
-  <div class="inner work-grid">
-    <div class="figure rise">2<em>часа живёт событие — потом оно уже никому не нужно</em></div>
-    <div>
-      <p class="eyebrow rise d1">Рядом · своё приложение</p>
-      <h2 class="big rise d1">Что я могу сделать прямо сейчас рядом со мной?</h2>
-      <div class="facts">
-        <div class="fact rise d2"><div class="k">Идея</div><div>Не афиша города и не лента друзей. Карта того, что происходит в двух шагах и <span class="accent">закончится через пару часов</span>: бесплатная тренировка в семь, распродажа до вечера, сосед зовёт играть в футбол.</div></div>
-        <div class="fact rise d2"><div class="k">Внутри</div><div>Карта Яндекса со сжатием близких точек в группы, геопозиция, камера, вход через VK и Telegram. Один и тот же код работает и сайтом, и приложением на Android.</div></div>
-        <div class="fact rise d2"><div class="k">Сделал</div><div>Сам, от идеи до выложенной версии.</div></div>
-      </div>
-      <div class="btns rise d3">
-        <button class="cta" type="button" data-open="https://azatilfakovich1993.github.io/ryadom/" data-title="Рядом — живые события">Открыть здесь</button>
-        <a class="cta ghost" href="https://azatilfakovich1993.github.io/ryadom/" target="_blank" rel="noopener">В новой вкладке</a>
-      </div>
-    </div>
+<!-- ================= работы ================= -->
+<section class="panel light" id="works" data-dot="Работы">
+  <div class="inner wide">
+    <p class="eyebrow rise">Работы</p>
+    <h2 class="mid rise d1">Шесть штук. Каждую можно открыть прямо здесь и потрогать.</h2>
+    <div class="filters rise d1" id="filters"></div>
+    <div class="cards" id="cards"></div>
   </div>
 </section>
 
@@ -581,6 +528,175 @@ document.getElementById("v-close").addEventListener("click", closeWork);
 addEventListener("keydown", function(e){
   if(e.key === "Escape" && viewer.classList.contains("on")) closeWork();
 });
+
+/* ---- работы карточками ----
+   Всё в одном списке: и текст, и разряд, и метка про расход на модель.
+   Правится в одном месте, разметка собирается отсюда. */
+var WORKS = [
+  {
+    cat:"check", chip:"Проверка",
+    fig:"2 из 5", fign:"товаров, которые я открыл, вели покупателя не туда",
+    title:"Адрес страницы не совпадает с названием товара",
+    tag:["free","Ни одного обращения к нейросети"],
+    rows:[
+      ["Нашёл","Товар «Старт 3.0» лежит по адресу start_2_0, «Соло» — по адресу fmt02_06."],
+      ["Чем плохо","Человек ищет в поиске новую модель, попадает на страницу со старым адресом и уходит. Реклама на такой товар оплачена, а покупка не случилась."],
+      ["Сделал","Проверку, которая проходит весь каталог по карте сайта и присылает список расхождений. Прогон ничего не стоит, запускать можно хоть каждый день."]
+    ],
+    url:"https://azatilfakovich1993-coder.github.io/ergostol-check/", ut:"Проверка каталога"
+  },
+  {
+    cat:"check", chip:"Проверка",
+    fig:"2.3.18", fign:"пункт их же договора, который никто не выполняет",
+    title:"Проверка записана в договоре, но её никто не делает",
+    tag:["part","Модель нужна в 3 правилах из 26"],
+    rows:[
+      ["Нашёл","В публичном договоре прямо сказано: карточки нужно еженедельно проверять на полноту. Руками это делать некому — значит не делается."],
+      ["Чем плохо","Неполная карточка — это тур, который человек не купил, потому что не понял, что входит в цену."],
+      ["Сделал","Проверку по 26 правилам, выведенным из этого же договора. Пороги правятся на странице, можно добавлять свои."]
+    ],
+    url:"https://azatilfakovich1993-coder.github.io/yarko-check/", ut:"Проверка карточек туров"
+  },
+  {
+    cat:"check", chip:"Проверка",
+    fig:"0 ₽", fign:"стоит доступ, за который собирались платить",
+    title:"Разбор откликов без ручной сортировки",
+    tag:["part","Модель нужна в 3 правилах из 17"],
+    rows:[
+      ["Нашёл","В документации сервиса: чтобы разбирать уже пришедшие отклики, платный доступ к базе резюме не нужен. Он нужен только чтобы самому искать людей."],
+      ["Чем плохо","Без разбора рекрутер читает всё подряд. Сильный кандидат ждёт в общей куче и уходит к тому, кто ответил быстрее."],
+      ["Сделал","Разбор на три стопки: смотреть первым, под вопросом, отказ. Пороги меняются прямо на странице."]
+    ],
+    url:"https://azatilfakovich1993-coder.github.io/hh-otkliki/", ut:"Разбор откликов"
+  },
+  {
+    cat:"check", chip:"Отчёты",
+    fig:"0", fign:"отчётов по продажам было у директора",
+    title:"Никто не видел, кто должен был позвонить снова",
+    tag:["free","Ни одного обращения к нейросети"],
+    rows:[
+      ["Нашёл","CRM нет, сделки живут в головах и переписке. Клиент с годовым циклом закупки просто теряется — вспомнить о нём некому."],
+      ["Чем плохо","Постоянный покупатель уходит к конкуренту не потому, что там дешевле, а потому что там позвонили первыми."],
+      ["Сделал","Четыре экрана: кому звонить сегодня, сделки, карточка клиента и расчёт цены к тендеру с коридором — ниже работаем в минус, выше теряем преимущество."]
+    ],
+    url:"https://azatilfakovich1993-coder.github.io/omega-tender/", ut:"Отчёты по продажам"
+  },
+  {
+    cat:"app", chip:"Приложение на заказ",
+    fig:"150+", fign:"человек пользуются приложением сейчас",
+    title:"Приложение для мусульман: Android и веб",
+    tag:null,
+    rows:[
+      ["Задача","Сделать на заказ приложение с временами намаза, Кораном с аудио, чатом и обучением арабскому алфавиту."],
+      ["Сделал","От первой строки до выкладки в магазин. Один код работает и сайтом, и приложением на Android."],
+      ["Веду сам","Обновления, разбор аварий, свой прокси и сторож, который предупреждает об истечении сертификата за 14, 7 и 1 день."]
+    ],
+    url:"https://nurhayat.ru/app", ut:"Nur Hayat"
+  },
+  {
+    cat:"app", chip:"Своё приложение",
+    fig:"1–3 часа", fign:"столько живёт событие, потом исчезает с карты",
+    title:"Что происходит прямо сейчас в пятистах метрах от меня",
+    tag:null,
+    rows:[
+      ["Идея","Не афиша города и не лента друзей. Карта того, что происходит рядом и скоро закончится: собирают на футбол, зовут поесть, кому-то нужна помощь."],
+      ["Как устроено","Четыре вида событий: спорт, еда, информация и SOS. Человек ставит событие на карту и выбирает, сколько оно будет видно — час, два или три. Потом оно пропадает само."],
+      ["Внутри","Карта Яндекса со сжатием близких точек в группы, геопозиция, камера, вход через VK и Telegram. Один код — и сайт, и приложение на Android."]
+    ],
+    url:"https://azatilfakovich1993.github.io/ryadom/", ut:"Рядом — живые события"
+  }
+];
+
+var CATS = [
+  {k:"all",   n:"Все"},
+  {k:"check", n:"Проверки и отчёты"},
+  {k:"app",   n:"Приложения"}
+];
+
+(function buildWorks(){
+  var box = document.getElementById("cards");
+  var fbox = document.getElementById("filters");
+  if(!box) return;
+
+  CATS.forEach(function(c, i){
+    var b = document.createElement("button");
+    b.type = "button";
+    b.textContent = c.n;
+    b.setAttribute("aria-pressed", i === 0 ? "true" : "false");
+    b.addEventListener("click", function(){
+      [].forEach.call(fbox.children, function(x){ x.setAttribute("aria-pressed", "false"); });
+      b.setAttribute("aria-pressed", "true");
+      [].forEach.call(box.children, function(card){
+        card.classList.toggle("hide", c.k !== "all" && card.dataset.cat !== c.k);
+      });
+    });
+    fbox.appendChild(b);
+  });
+
+  WORKS.forEach(function(w){
+    var c = document.createElement("div");
+    c.className = "card rise";
+    c.dataset.cat = w.cat;
+
+    var chip = document.createElement("span");
+    chip.className = "chip " + w.cat;
+    chip.textContent = w.chip;
+    c.appendChild(chip);
+
+    var fig = document.createElement("div");
+    fig.className = "fig";
+    fig.textContent = w.fig;
+    c.appendChild(fig);
+
+    var fn = document.createElement("div");
+    fn.className = "fig-n";
+    fn.textContent = w.fign;
+    c.appendChild(fn);
+
+    var h = document.createElement("h3");
+    h.textContent = w.title;
+    c.appendChild(h);
+
+    if(w.tag){
+      var tg = document.createElement("span");
+      tg.className = "tag " + w.tag[0];
+      tg.textContent = w.tag[1];
+      c.appendChild(tg);
+    }
+
+    var rows = document.createElement("div");
+    rows.className = "rows";
+    w.rows.forEach(function(r){
+      var d = document.createElement("div");
+      d.className = "r";
+      var b = document.createElement("b");
+      b.textContent = r[0];
+      d.appendChild(b);
+      d.appendChild(document.createTextNode(r[1]));
+      rows.appendChild(d);
+    });
+    c.appendChild(rows);
+
+    var btns = document.createElement("div");
+    btns.className = "btns";
+    var open = document.createElement("button");
+    open.type = "button";
+    open.className = "cta";
+    open.textContent = "Открыть здесь";
+    open.addEventListener("click", function(){ openWork(w.url, w.ut); });
+    var tab = document.createElement("a");
+    tab.className = "cta ghost";
+    tab.href = w.url;
+    tab.target = "_blank";
+    tab.rel = "noopener";
+    tab.textContent = "В новой вкладке";
+    btns.appendChild(open);
+    btns.appendChild(tab);
+    c.appendChild(btns);
+
+    box.appendChild(c);
+  });
+})();
 
 /* ---- расчёт расходов на модель ---- */
 (function calc(){
