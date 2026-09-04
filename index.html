@@ -93,19 +93,21 @@ p{margin:0}
 .dots button.on{background:var(--sig); transform:scale(1.5)}
 
 /* ---------- первый экран ---------- */
-.hero{justify-content:center; text-align:center; align-items:center}
+.hero{justify-content:center; text-align:center; align-items:center;
+  min-height:auto; padding:104px 0 78px}
 .hero .inner{display:flex; flex-direction:column; align-items:center}
 .face{
-  width:104px; height:104px; border-radius:50%; overflow:hidden; margin-bottom:34px;
+  width:82px; height:82px; border-radius:50%; overflow:hidden; margin-bottom:22px;
   background:linear-gradient(150deg,#2B2B31,#131316);
   border:1px solid rgba(255,255,255,.14);
   display:flex; align-items:center; justify-content:center;
 }
-.face span{font-size:34px; font-weight:600; color:#8E8E96; letter-spacing:-.02em}
+.face span{font-size:27px; font-weight:600; color:#8E8E96; letter-spacing:-.02em}
 .face img{width:100%; height:100%; object-fit:cover}
-.hero .pre{margin:0 auto 18px; text-align:center; max-width:40ch}
+.hero .pre{margin:0 auto 12px; text-align:center; max-width:40ch}
 .hero .big{font-size:clamp(25px,3.9vw,42px); line-height:1.14; max-width:26ch; margin:0 auto}
-.hero .lede{margin:26px auto 0; max-width:36ch; color:var(--light-dim); text-align:center}
+.hero .cta{margin-top:28px}
+.hero .lede{margin:20px auto 0; max-width:38ch; color:var(--light-dim); text-align:center}
 .cta{
   display:inline-flex; align-items:center; gap:9px; margin-top:38px;
   background:var(--dark-ink); color:var(--white); text-decoration:none;
@@ -120,7 +122,7 @@ p{margin:0}
 .dark .cta.ghost,.deep .cta.ghost{color:#C2C8D0; border-color:rgba(255,255,255,.22)}
 .dark .cta.ghost:hover,.deep .cta.ghost:hover{color:#fff; border-color:rgba(255,255,255,.5)}
 .scroll-hint{
-  position:absolute; left:50%; bottom:34px; transform:translateX(-50%);
+  position:absolute; left:50%; bottom:22px; transform:translateX(-50%);
   font-size:12px; color:#6E6E73; letter-spacing:.02em;
 }
 .scroll-hint::after{
