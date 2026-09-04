@@ -125,6 +125,15 @@ p{margin:0}
 }
 @keyframes drop{0%{opacity:0;transform:scaleY(.2)}40%{opacity:1}100%{opacity:0;transform:scaleY(1)}}
 
+/* Строка над заголовком: сказана честно, но не должна перекрикивать то,
+   ради чего человека и зовут. Поэтому мелко и приглушённо. */
+.pre{
+  font-size:clamp(15px,1.7vw,18px); font-weight:400; line-height:1.4;
+  margin-bottom:14px; max-width:36ch;
+}
+.light .pre{color:var(--dark-dim)} .dark .pre,.deep .pre{color:var(--light-dim)}
+.claim-wrap .pre{margin-left:auto; margin-right:auto}
+
 /* ---------- экран-утверждение ---------- */
 .claim-wrap{text-align:center}
 .claim-wrap .big{max-width:18ch; margin:0 auto}
@@ -356,9 +365,10 @@ p{margin:0}
 <section class="panel light" id="about" data-dot="О себе">
   <div class="inner narrow claim-wrap">
     <p class="eyebrow rise">Коротко о себе</p>
-    <h2 class="big rise d1">Скажу честно: программист из меня начинающий.</h2>
-    <p class="lede soft rise d2">Зато я много лет в продажах и знаю изнутри, где у бизнеса болит. Что злит клиента. Что теряет менеджер. Чего не видит руководитель, пока ему не покажут.</p>
-    <p class="lede soft rise d2" style="margin-top:20px">Сайты, приложения и ботов я делаю параллельно уже давно. Но делаю их не как программист, а как человек, который понимает, зачем они нужны и что должно измениться после того, как их включат.</p>
+    <p class="pre rise">Я пришёл не из разработки, а из продаж.</p>
+    <h2 class="big rise d1">И знаю изнутри, где бизнес теряет деньги.</h2>
+    <p class="lede soft rise d2">Что злит клиента. Что теряет менеджер. Чего не видит руководитель, пока ему не покажут. Много лет я был по ту сторону — продавал, договаривался, разбирал претензии.</p>
+    <p class="lede soft rise d2" style="margin-top:20px">Сайты, приложения и ботов делаю параллельно уже давно. Но делаю их не как программист, а как человек, который понимает, зачем они нужны и что должно измениться после того, как их включат.</p>
   </div>
 </section>
 
