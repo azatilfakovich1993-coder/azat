@@ -328,14 +328,27 @@ p{margin:0}
 }
 .card .cta.ghost:hover{background:transparent; color:#fff; border-color:rgba(255,255,255,.45)}
 
-/* Блок «это не всё»: работ больше, но ссылку дать можно не на каждую. */
+/* Блок «это не всё»: работ больше, но ссылку дать можно не на каждую.
+   Раньше был пунктирной рамкой с абзацем — читалось как недоделка. */
 .more{
-  margin-top:22px; padding:26px 24px 24px;
-  border:1px dashed rgba(255,255,255,.16); border-radius:18px;
+  margin-top:16px; padding:30px 28px;
+  background:#0E1013; border:1px solid rgba(255,255,255,.09); border-radius:18px;
+  display:grid; grid-template-columns:minmax(240px,.85fr) 1.15fr; gap:34px;
+  position:relative; overflow:hidden;
 }
-.more h3{font-size:18px; font-weight:600; letter-spacing:-.02em; color:#F2F4F7; margin-bottom:10px}
-.more p{font-size:15px; line-height:1.55; color:#9AA1AA; max-width:78ch}
-.more-note{margin-top:12px; font-size:13.5px; color:#71787F}
+.more::before{
+  content:""; position:absolute; left:0; top:0; bottom:0; width:3px; background:var(--sig);
+}
+@media(max-width:820px){.more{grid-template-columns:1fr; gap:22px}}
+.more h3{font-size:19px; font-weight:600; letter-spacing:-.025em; color:#F2F4F7; margin-bottom:10px}
+.more p{font-size:14px; line-height:1.55; color:#71787F}
+.more-r{display:flex; flex-wrap:wrap; gap:9px; align-content:flex-start}
+.more-r span{
+  font-size:13.5px; line-height:1.35; color:#C2C8D0;
+  border:1px solid rgba(255,255,255,.16); border-radius:10px; padding:9px 14px;
+  transition:border-color .25s, color .25s;
+}
+.more-r span:hover{border-color:var(--sig); color:#fff}
 
 /* ---------- расчёт ---------- */
 .calc{background:var(--deep); border:1px solid rgba(255,255,255,.1); border-radius:22px; padding:26px 24px 24px}
@@ -514,9 +527,16 @@ p{margin:0}
     <div class="cards" id="cards"></div>
 
     <div class="more rise">
-      <h3>Это не всё, что я делал</h3>
-      <p>Кроме семи работ выше были боты для записи клиентов и переписки с ними, разбор присланных файлов с переносом данных в таблицы, рассылки и другие небольшие программы, которые убирают ручную работу.</p>
-      <p class="more-note">Ссылок на них не даю: часть сделана под конкретную задачу и живёт внутри компаний.</p>
+      <div class="more-l">
+        <h3>Это не всё, что я делал</h3>
+        <p>Ссылок на эти работы не даю: они сделаны под конкретную задачу и живут внутри компаний.</p>
+      </div>
+      <div class="more-r">
+        <span>Боты для записи клиентов</span>
+        <span>Переписка с клиентами</span>
+        <span>Разбор присланных файлов с переносом в таблицы</span>
+        <span>И другие небольшие программы, убирающие ручную работу</span>
+      </div>
     </div>
   </div>
 </section>
