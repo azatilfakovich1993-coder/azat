@@ -248,6 +248,35 @@ p{margin:0}
 .stp-out{margin-top:10px; padding-left:13px; border-left:2px solid var(--sig);
   color:#C5CBD3 !important; font-size:14.5px}
 
+/* Раскрывающиеся шаги: свёрнуто видно весь порядок, детали — по нажатию.
+   Тот же жест, что и в карточках работ, — человек его уже знает. */
+.acc{display:grid; gap:12px; margin-top:34px}
+.ac{background:#0B0C0E; border:1px solid rgba(255,255,255,.10); border-radius:16px;
+  transition:border-color .3s var(--ease), background .3s var(--ease)}
+.ac:hover{border-color:rgba(255,255,255,.24)}
+.ac.open{background:#0E1013; border-color:rgba(255,255,255,.20)}
+.ac-head{
+  width:100%; display:flex; align-items:center; gap:20px; text-align:left;
+  background:none; border:none; cursor:pointer; font-family:var(--sans);
+  padding:20px 22px; color:inherit;
+}
+.ac-n{flex:none; width:56px; font-size:13.5px; font-weight:600; color:var(--sig)}
+.ac-t{flex:1; font-size:18px; font-weight:600; letter-spacing:-.02em; color:#F2F4F7}
+.ac .plus{margin-top:0}
+.ac-body{display:grid; grid-template-rows:0fr; transition:grid-template-rows .5s var(--ease)}
+.ac.open .ac-body{grid-template-rows:1fr}
+.ac-body > div{overflow:hidden}
+.ac-in{padding:0 22px 22px 98px; opacity:0; transform:translateY(8px);
+  transition:opacity .35s .1s var(--ease), transform .4s .1s var(--ease)}
+.ac.open .ac-in{opacity:1; transform:none}
+.ac-in p{font-size:15px; line-height:1.55; color:#9AA1AA; max-width:66ch}
+@media(max-width:620px){
+  .ac-head{gap:14px; padding:18px}
+  .ac-n{width:44px; font-size:12.5px}
+  .ac-t{font-size:16.5px}
+  .ac-in{padding:0 18px 20px 18px}
+}
+
 /* Цена: без неё разговор про автоматизацию упирается в «а сколько?». */
 /* Правило про цену: важнее самих сумм, поэтому выделено. */
 .rule{margin-top:18px; padding:16px 18px; border-radius:14px;
@@ -580,7 +609,7 @@ p{margin:0}
     <div class="face" id="face"><span>АШ</span></div>
     <p class="pre rise">Здравствуйте, меня зовут Азат.</p>
     <h1 class="big rise d1">Разбираю, как устроена работа в компании, и убираю то, на чём теряются деньги.</h1>
-    <p class="lede rise d2">Офис или производство. Приеду, посмотрю своими глазами, разложу работу по шагам и покажу, что из неё можно убрать — и во сколько это обойдётся.</p>
+    <p class="lede rise d2">Офис или производство. Приеду, посмотрю своими глазами и покажу, что из работы можно убрать — и во сколько это обойдётся.</p>
     <a class="cta big-cta rise d3" href="#free">Первичный разбор — бесплатно <span class="down">↓</span></a>
     <p class="cta-sub rise d3">3–4 часа смотрю, как устроена работа. Считаю, сколько часов и денег уходит впустую. Отдаю список того, что можно закрыть, с ценой и сроком. Без обязательств.</p>
     <div class="quick rise d3">
@@ -614,23 +643,41 @@ p{margin:0}
   <div class="inner">
     <p class="eyebrow rise">С чего начинаю</p>
     <h2 class="big rise d1">Первичный разбор — бесплатно.</h2>
-    <p class="lede soft rise d2" style="margin-top:20px;max-width:62ch">Три-четыре часа смотрю, как работа идёт на самом деле. Считаю в часах и деньгах. Отдаю список: что можно закрыть, чем именно и во сколько это обойдётся. Дальше решаете вы — обязательств никаких.</p>
+    <p class="lede soft rise d2" style="margin-top:20px;max-width:62ch">Три-четыре часа смотрю, как работа идёт на самом деле, и считаю, во сколько она обходится.</p>
 
-    <div class="steps rise d2">
-      <div class="stp"><div class="n">Шаг 1</div><div>
-        <h3>Бесплатный разбор, 3–4 часа</h3>
-        <p>Смотрю процессы своими глазами: кто что делает руками, где переписывают из одного места в другое, где люди ждут друг друга. Офис, склад, цех — без разницы. Считаю: сколько человек, сколько часов в неделю, сколько это стоит в месяц.</p>
-        <p class="stp-out">На выходе: сэкономим столько-то часов, это столько-то рублей в месяц. И список, что чем закрывается — обычной программой, нейросетью или ничем.</p>
-      </div></div>
-      <div class="stp"><div class="n">Шаг 2</div><div>
-        <h3>Делаю самое дешёвое из списка</h3>
-        <p>Не всё сразу, а одну вещь с понятным результатом. Через неделю видно, сработало или нет — и решение принимается по факту, а не по обещаниям.</p>
-        <p class="stp-out">На выходе: работающая вещь, которой пользуются каждый день.</p>
-      </div></div>
-      <div class="stp"><div class="n">Шаг 3</div><div>
-        <h3>Дальше по списку</h3>
-        <p>Остальное беру по очереди, каждый раз с ценой и сроком. Ничего нового не начинаю, пока предыдущее не заработало.</p>
-      </div></div>
+    <div class="acc rise d2">
+      <div class="ac">
+        <button class="ac-head" type="button" aria-expanded="false">
+          <span class="ac-n">Шаг 1</span>
+          <span class="ac-t">Бесплатный разбор, 3–4 часа</span>
+          <span class="plus"></span>
+        </button>
+        <div class="ac-body"><div><div class="ac-in">
+          <p>Смотрю своими глазами: кто что делает руками, где переписывают из одного места в другое, где ждут друг друга. Офис, склад, цех — без разницы. Считаю: сколько человек, сколько часов в неделю, сколько это в деньгах.</p>
+          <p class="stp-out">На выходе: сэкономим столько-то часов, это столько-то рублей в месяц. И список, что чем закрывается — обычной программой, нейросетью или ничем.</p>
+        </div></div></div>
+      </div>
+      <div class="ac">
+        <button class="ac-head" type="button" aria-expanded="false">
+          <span class="ac-n">Шаг 2</span>
+          <span class="ac-t">Делаю самое дешёвое из списка</span>
+          <span class="plus"></span>
+        </button>
+        <div class="ac-body"><div><div class="ac-in">
+          <p>Не всё сразу, а одну вещь с понятным результатом. Через неделю видно, сработало или нет — и решение принимается по факту, а не по обещаниям.</p>
+          <p class="stp-out">На выходе: работающая вещь, которой пользуются каждый день.</p>
+        </div></div></div>
+      </div>
+      <div class="ac">
+        <button class="ac-head" type="button" aria-expanded="false">
+          <span class="ac-n">Шаг 3</span>
+          <span class="ac-t">Дальше по списку</span>
+          <span class="plus"></span>
+        </button>
+        <div class="ac-body"><div><div class="ac-in">
+          <p>Остальное беру по очереди, каждый раз с ценой и сроком. Ничего нового не начинаю, пока предыдущее не заработало.</p>
+        </div></div></div>
+      </div>
     </div>
 
     <h3 class="price-h rise d2">Сколько это стоит</h3>
@@ -742,7 +789,7 @@ p{margin:0}
 <section class="panel dark" id="call" data-dot="Связаться">
   <div class="inner narrow claim-wrap" style="display:flex;flex-direction:column;align-items:center">
     <h2 class="big rise">Расскажите про задачу — предложу решение.</h2>
-    <p class="lede soft rise d1" style="margin-top:24px;max-width:46ch">Покажите процесс, который отнимает время, — скажу, что из него можно убрать и сколько это займёт. Разбор бесплатный. По Ижевску приеду на место, в другие города — по договорённости. Дальше работа одна и та же, разница только в оформлении: договор на проект или трудовой.</p>
+    <p class="lede soft rise d1" style="margin-top:24px;max-width:46ch">По Ижевску приеду на место, в другие города — по договорённости. Работа одна и та же, разница только в оформлении: договор на проект или трудовой.</p>
     <form class="ask rise d2" id="ask" novalidate>
       <div class="ask-row">
         <label for="a-name">Как к вам обращаться</label>
@@ -927,6 +974,25 @@ addEventListener("keydown", function(e){
       msg.textContent = "Не отправилось. Позвоните: +7 912 017-54-69 или напишите на azat_ilfakovich@mail.ru";
       btn.disabled = false;
       btn.textContent = "Отправить";
+    });
+  });
+})();
+
+/* Раскрытие шагов: открыт всегда один — иначе экран снова превращается в простыню. */
+(function steps(){
+  var list = [].slice.call(document.querySelectorAll(".ac"));
+  list.forEach(function(ac){
+    var head = ac.querySelector(".ac-head");
+    head.addEventListener("click", function(){
+      var was = ac.classList.contains("open");
+      list.forEach(function(o){
+        o.classList.remove("open");
+        o.querySelector(".ac-head").setAttribute("aria-expanded", "false");
+      });
+      if(!was){
+        ac.classList.add("open");
+        head.setAttribute("aria-expanded", "true");
+      }
     });
   });
 })();
