@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Азат Шарипов</title>
-<meta name="description" content="Делаю сайты, приложения и ботов. Много лет в продажах — знаю, где нужна нейросеть, где хватит обычной программы, а что лучше оставить человеку.">
+<meta name="description" content="Убираю из компаний ручную работу, на которой теряются деньги. Семь работающих примеров, любой можно открыть. Беру проектами и в штат.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600;700&display=swap">
@@ -207,6 +207,16 @@ p{margin:0}
 .light .fact .k{color:var(--dark-dim)} .dark .fact .k,.deep .fact .k{color:var(--light-dim)}
 .btns{display:flex; flex-wrap:wrap; gap:12px; margin-top:34px}
 .btns .cta{margin-top:0}
+
+/* Список узнаваемых болей: человек должен ткнуть в два пункта и сказать «это про нас». */
+.pains{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; margin-top:30px;
+  background:rgba(0,0,0,.10); border:1px solid rgba(0,0,0,.10)}
+@media(max-width:900px){.pains{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.pains{grid-template-columns:1fr}}
+.pain{background:var(--white); padding:24px 22px 26px; transition:background .3s}
+.pain:hover{background:var(--pale)}
+.pain span{display:block; font-size:12px; font-weight:600; color:#067A4E; margin-bottom:10px}
+.pain p{font-size:15.5px; line-height:1.5; color:var(--dark-ink)}
 
 /* ---------- работы карточками ---------- */
 .wide{max-width:1180px}
@@ -446,6 +456,7 @@ p{margin:0}
 <div class="bar" id="bar"><div class="bar-in">
   <a class="me" href="#top">Азат Шарипов</a>
   <nav>
+    <a href="#pain">Узнаёте?</a>
     <a href="#about">О себе</a>
     <a href="#choose">Как выбираю</a>
     <a href="#works">Работы</a>
@@ -461,14 +472,32 @@ p{margin:0}
   <div class="inner">
     <div class="face" id="face"><span>АШ</span></div>
     <p class="pre rise">Здравствуйте, меня зовут Азат.</p>
-    <h1 class="big rise d1">Занимаюсь созданием сайтов, приложений и ботов, которые экономят компании время и деньги.</h1>
-    <p class="lede rise d2">Много лет работаю в продажах. Знаю эту работу изнутри — и создаю не то, что красиво выглядит, а то, чем потом пользуются каждый день.</p>
-    <a class="cta rise d3" href="#about">Рассказать о себе <span class="down">↓</span></a>
+    <h1 class="big rise d1">Убираю из компании ручную работу, на которой теряются деньги.</h1>
+    <p class="lede rise d2">Делаю сайты, приложения и ботов. Много лет работаю в продажах — поэтому вижу задачу глазами тех, кто с ней живёт каждый день.</p>
+    <a class="cta rise d3" href="#pain">С чего начать <span class="down">↓</span></a>
     <div class="quick rise d3">
       <div><b data-count="7">7</b><span>работ, которые<br>можно открыть здесь</span></div>
       <div><b data-count="150" data-suffix="+">150+</b><span>человек пользуются<br>моим приложением</span></div>
       <div><b>Ижевск</b><span>работаю<br>удалённо</span></div>
     </div>
+  </div>
+</section>
+
+<!-- ================= узнаёте ================= -->
+<section class="panel light" id="pain" data-dot="Узнаёте?">
+  <div class="inner">
+    <p class="eyebrow rise">Узнаёте?</p>
+    <h2 class="mid rise d1">Это есть почти в каждой компании. И почти везде это никто не считает.</h2>
+    <div class="pains rise d1">
+      <div class="pain"><span>01</span><p>Заявки приходят на почту, а менеджер вручную переносит их в таблицу.</p></div>
+      <div class="pain"><span>02</span><p>Никто не видит, кто из клиентов перестал покупать, — пока он не ушёл насовсем.</p></div>
+      <div class="pain"><span>03</span><p>Отчёт для руководителя собирают полдня, а к моменту сдачи он уже устарел.</p></div>
+      <div class="pain"><span>04</span><p>На одни и те же вопросы клиентов отвечают по десять раз в день.</p></div>
+      <div class="pain"><span>05</span><p>Карточки на сайте никто не проверял: где-то нет цены, где-то фото, где-то описания.</p></div>
+      <div class="pain"><span>06</span><p>Резюме, счета и заявки читают глазами, потому что «а как иначе».</p></div>
+    </div>
+    <p class="lede soft rise d3" style="margin-top:32px;max-width:60ch">Если узнали хотя бы два пункта — ниже семь работ, где я такое уже убирал. Любую можно открыть и потрогать.</p>
+    <a class="next rise d3" href="#works">Посмотреть работы <span class="down">↓</span></a>
   </div>
 </section>
 
@@ -564,7 +593,7 @@ p{margin:0}
 <section class="panel dark" id="call" data-dot="Связаться">
   <div class="inner narrow claim-wrap" style="display:flex;flex-direction:column;align-items:center">
     <h2 class="big rise">Расскажите про задачу — предложу решение.</h2>
-    <p class="lede soft rise d1" style="margin-top:24px;max-width:46ch">Обычно за день-два приношу работающую проверку. Посмотреть и решить, надо ли дальше, — бесплатно. Готов и в штат, и отдельными задачами со сроком и результатом.</p>
+    <p class="lede soft rise d1" style="margin-top:24px;max-width:46ch">Покажите процесс, который отнимает время, — скажу, что из него можно убрать и сколько это займёт. Смотреть бесплатно. Дальше работаю проектами: срок, цена, результат. Или в штат, если так удобнее.</p>
     <div class="links rise d2" id="links"></div>
     <p class="tail rise d3">Все ссылки ведут на работающие страницы, а не на картинки. В разборе откликов люди выдуманы — настоящие резюме в примеры не беру. Ижевск, работаю удалённо.</p>
   </div>
