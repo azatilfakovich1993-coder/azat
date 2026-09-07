@@ -261,8 +261,8 @@ p{margin:0}
   padding:20px 22px; color:inherit;
 }
 .ac-n{flex:none; width:56px; font-size:13.5px; font-weight:600; color:var(--sig)}
-.ac-head:not(:has(.ac-n)) .ac-t{padding-left:2px}
-.acc .ac-head:not(:has(.ac-n)) + .ac-body .ac-in{padding-left:22px}
+.ac-head.plain .ac-t{padding-left:2px}
+.ac-head.plain + .ac-body .ac-in{padding-left:22px}
 .ac-t{flex:1; font-size:18px; font-weight:600; letter-spacing:-.02em; color:#F2F4F7}
 .ac .plus{margin-top:0}
 .ac-body{display:grid; grid-template-rows:0fr; transition:grid-template-rows .5s var(--ease)}
@@ -705,7 +705,16 @@ p{margin:0}
     <p class="pre rise">Я пришёл не из разработки, а из продаж.</p>
     <h2 class="big rise d1">И знаю изнутри, где бизнес теряет деньги.</h2>
     <p class="lede soft rise d2">Что злит клиента. Что теряет менеджер. Чего не видит руководитель, пока ему не покажут. Много лет я был по ту сторону — продавал, договаривался, разбирал претензии.</p>
-    <p class="lede soft rise d2" style="margin-top:20px">Сайты, приложения и ботов делаю параллельно уже давно. Но делаю их не как программист, а как человек, который понимает, зачем они нужны и что изменится в работе, когда они появятся.</p>
+    <div class="acc rise d2" style="max-width:560px;margin:26px auto 0;text-align:left">
+      <div class="ac">
+        <button class="ac-head plain" type="button" aria-expanded="false">
+          <span class="ac-t">А программирование?</span><span class="plus"></span>
+        </button>
+        <div class="ac-body"><div><div class="ac-in">
+          <p>Сайты, приложения и ботов делаю параллельно уже давно. Но делаю их не как программист, а как человек, который понимает, зачем они нужны и что изменится в работе, когда они появятся.</p>
+        </div></div></div>
+      </div>
+    </div>
     <a class="next rise d3" href="#choose">Как я выбираю решение <span class="down">↓</span></a>
   </div>
 </section>
@@ -715,18 +724,30 @@ p{margin:0}
   <div class="inner">
     <p class="eyebrow rise">Как я выбираю решение</p>
     <h2 class="mid rise d1">Прежде чем что-то делать, отвечаю на один вопрос: чем это дешевле закрыть?</h2>
-    <div class="hows three">
-      <div class="how rise d1">
-        <h3>Нейросетью</h3>
-        <p class="soft">Когда нужно понять смысл: это письмо написали лично нам или разослали всем? Без неё никак — но каждый вопрос стоит денег.</p>
+    <div class="acc rise d1" style="margin-top:30px">
+      <div class="ac">
+        <button class="ac-head plain" type="button" aria-expanded="false">
+          <span class="ac-t">Нейросетью</span><span class="plus"></span>
+        </button>
+        <div class="ac-body"><div><div class="ac-in">
+          <p>Когда нужно понять смысл: это письмо написали лично нам или разослали всем? Без неё никак — но каждый вопрос стоит денег, и каждый месяц заново.</p>
+        </div></div></div>
       </div>
-      <div class="how rise d2">
-        <h3>Обычной программой</h3>
-        <p class="soft">Когда нужно сравнить, посчитать или проверить. Работает мгновенно, стоит ноль и всегда отвечает одинаково. <span class="accent">Большую часть работы закрывает именно она.</span></p>
+      <div class="ac">
+        <button class="ac-head plain" type="button" aria-expanded="false">
+          <span class="ac-t">Обычной программой</span><span class="plus"></span>
+        </button>
+        <div class="ac-body"><div><div class="ac-in">
+          <p>Когда нужно сравнить, посчитать или проверить. Работает мгновенно, стоит ноль и всегда отвечает одинаково. <span class="accent">Большую часть работы закрывает именно она.</span></p>
+        </div></div></div>
       </div>
-      <div class="how rise d3">
-        <h3>Руками человека</h3>
-        <p class="soft">Когда ошибка дорого стоит: отказать кандидату, назвать цену. Программа раскладывает и подсказывает, решает человек.</p>
+      <div class="ac">
+        <button class="ac-head plain" type="button" aria-expanded="false">
+          <span class="ac-t">Руками человека</span><span class="plus"></span>
+        </button>
+        <div class="ac-body"><div><div class="ac-in">
+          <p>Когда ошибка дорого стоит: отказать кандидату, назвать цену. Программа раскладывает и подсказывает, решает человек.</p>
+        </div></div></div>
       </div>
     </div>
     <p class="lede soft rise d3" style="margin-top:34px;max-width:64ch">Нейросети мало сказать «сделай». Ей нужно объяснить по шагам: что на входе, что должно получиться, где ошибаться нельзя.</p>
@@ -769,7 +790,7 @@ p{margin:0}
 
     <div class="acc rise d3" style="max-width:640px;margin-left:auto;margin-right:auto;text-align:left">
       <div class="ac">
-        <button class="ac-head" type="button" aria-expanded="false">
+        <button class="ac-head plain" type="button" aria-expanded="false">
           <span class="ac-t">Почему нейросеть — это расход</span>
           <span class="plus"></span>
         </button>
