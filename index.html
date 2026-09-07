@@ -249,10 +249,14 @@ p{margin:0}
   color:#C5CBD3 !important; font-size:14.5px}
 
 /* Цена: без неё разговор про автоматизацию упирается в «а сколько?». */
+/* Правило про цену: важнее самих сумм, поэтому выделено. */
+.rule{margin-top:18px; padding:16px 18px; border-radius:14px;
+  background:rgba(0,224,138,.07); border:1px solid rgba(0,224,138,.22);
+  font-size:15.5px; line-height:1.55; color:#C5CBD3; max-width:70ch}
+.rule b{color:var(--sig); font-weight:600}
 .price-h{font-size:19px; font-weight:600; color:#F2F4F7; margin:44px 0 16px; letter-spacing:-.02em}
-.prices{display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
+.prices{display:grid; grid-template-columns:repeat(2,1fr); gap:1px;
   background:rgba(255,255,255,.10); border:1px solid rgba(255,255,255,.10)}
-@media(max-width:900px){.prices{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:560px){.prices{grid-template-columns:1fr}}
 .price{background:var(--near); padding:20px 18px 22px}
 .price b{display:block; font-size:24px; font-weight:600; letter-spacing:-.035em; color:#fff}
@@ -631,17 +635,14 @@ p{margin:0}
 
     <h3 class="price-h rise d2">Сколько это стоит</h3>
     <div class="prices rise d2">
-      <div class="price free-p"><b>0 ₽</b><span>разбор на месте</span></div>
-      <div class="price"><b>50–150 тыс.</b><span>небольшая задача: одна проверка, один отчёт, один бот</span></div>
-      <div class="price"><b>150–500 тыс.</b><span>средняя: несколько связанных вещей, свои экраны, интеграции</span></div>
-      <div class="price"><b>Обсуждаем</b><span>крупная: система, которой пользуется весь отдел</span></div>
+      <div class="price free-p"><b>0 ₽</b><span>разбор на месте, независимо от того, будем работать дальше или нет</span></div>
+      <div class="price"><b>Дальше — от объёма</b><span>называю цену и срок после разбора, когда уже понятно, что именно делаем</span></div>
     </div>
-    <p class="soft rise d3" style="margin-top:16px;font-size:14.5px">Результат фиксируем до старта: что именно должно измениться и как это проверим. Деньги — после.</p>
+    <p class="rule rise d2"><b>Правило одно:</b> работа должна стоить меньше, чем вы теряете сейчас. Если не получается — я так и скажу, и делать не будем.</p>
+    <p class="soft rise d3" style="margin-top:14px;font-size:14.5px">Результат фиксируем до старта: что именно должно измениться и как это проверим. Деньги — после.</p>
 
     <div class="honest rise d3">
-      <p><b>Скажу честно: отзывов у меня пока нет.</b> Этот формат я начал недавно, и первые клиенты только появляются.</p>
-      <p>Поэтому разбор и бесплатный. Вы ничем не рискуете — в худшем случае потеряете три часа и получите список своих потерь в цифрах. А я получаю результат, который смогу показать следующему.</p>
-      <p>Всё, что я делал раньше, — ниже на этой странице. Любую работу можно открыть прямо здесь и потрогать.</p>
+      <p><b>Почему разбор бесплатный.</b> Пока я не посмотрел, я не знаю, есть ли у вас что убирать. А вы не знаете, стоит ли со мной работать. Три часа отвечают на оба вопроса — и ни к чему не обязывают.</p>
     </div>
 
     <a class="next rise d3" href="#about">Кто я такой <span class="down">↓</span></a>
