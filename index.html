@@ -84,6 +84,15 @@ p{margin:0}
 .bar nav a{font-size:13px; color:#B9B9BE; text-decoration:none; transition:color .2s}
 .bar nav a:hover{color:#fff}
 @media(max-width:760px){.bar nav{display:none}}
+/* Кнопка в шапке: связаться можно с любого места страницы. */
+.bar-cta{
+  margin-left:auto; font-size:13.5px; font-weight:600; text-decoration:none;
+  background:var(--sig); color:#04150D; padding:8px 16px; border-radius:9px;
+  white-space:nowrap; transition:background .2s;
+}
+.bar nav + .bar-cta{margin-left:26px}
+.bar-cta:hover{background:#2BF0A4}
+@media(max-width:400px){.bar-cta{display:none}}
 
 /* точки-указатели справа */
 .dots{position:fixed; right:20px; top:50%; transform:translateY(-50%); z-index:60;
@@ -110,8 +119,14 @@ p{margin:0}
 .hero .pre{margin:0 auto 12px; text-align:center; max-width:40ch}
 .hero .big{font-size:clamp(25px,3.9vw,42px); line-height:1.14; max-width:26ch; margin:0 auto}
 .hero .cta{
-  margin-top:28px; position:relative;
+  margin-top:30px; position:relative;
   animation:halo 3s cubic-bezier(.3,.7,.4,1) infinite;
+}
+/* Главная кнопка страницы: крупнее обычной, её должно быть видно сразу. */
+.big-cta{font-size:18px; padding:17px 34px; border-radius:14px; font-weight:600}
+.cta-sub{
+  margin:18px auto 0; max-width:52ch; font-size:14.5px; line-height:1.55;
+  color:#71787F; text-align:center;
 }
 .hero .cta .down{display:inline-block; animation:bob 2.2s ease-in-out infinite}
 .hero .cta:hover .down{animation-duration:1.1s}
@@ -229,6 +244,31 @@ p{margin:0}
 .stp h3{font-size:19px; font-weight:600; letter-spacing:-.02em; color:#F2F4F7}
 .stp p{font-size:15px; line-height:1.55; color:#9AA1AA; margin-top:7px; max-width:66ch}
 
+/* Итог шага: что человек получает на руки. */
+.stp-out{margin-top:10px; padding-left:13px; border-left:2px solid var(--sig);
+  color:#C5CBD3 !important; font-size:14.5px}
+
+/* Цена: без неё разговор про автоматизацию упирается в «а сколько?». */
+.price-h{font-size:19px; font-weight:600; color:#F2F4F7; margin:44px 0 16px; letter-spacing:-.02em}
+.prices{display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
+  background:rgba(255,255,255,.10); border:1px solid rgba(255,255,255,.10)}
+@media(max-width:900px){.prices{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.prices{grid-template-columns:1fr}}
+.price{background:var(--near); padding:20px 18px 22px}
+.price b{display:block; font-size:24px; font-weight:600; letter-spacing:-.035em; color:#fff}
+.price span{display:block; font-size:13px; line-height:1.42; color:#71787F; margin-top:8px}
+.price.free-p b{color:var(--sig)}
+
+/* Прямое признание вместо выдуманного отзыва: работает лучше и не разваливается от вопроса. */
+.honest{
+  margin-top:34px; padding:26px 26px 24px; border-radius:18px;
+  background:#0E1013; border:1px solid rgba(255,255,255,.10);
+  border-left:3px solid var(--sig);
+}
+.honest p{font-size:15px; line-height:1.6; color:#9AA1AA; margin-bottom:.8em}
+.honest p:last-child{margin-bottom:0}
+.honest b{color:#F2F4F7; font-weight:600}
+
 /* ---------- работы карточками ---------- */
 .wide{max-width:1180px}
 .filters{display:flex; flex-wrap:wrap; gap:8px; margin:28px 0 24px}
@@ -341,6 +381,7 @@ p{margin:0}
 .card .r.fix{color:var(--sig)}
 .card .r.info{color:#8A7BD6}
 
+.card-note{font-size:13.5px; line-height:1.5; color:#71787F; margin-bottom:18px}
 .card .btns{margin-top:auto; padding-top:2px; gap:10px}
 .card .cta{
   font-size:14px; padding:10px 20px; border-radius:10px;
@@ -422,6 +463,34 @@ p{margin:0}
 .links .none{font-size:15px; color:var(--fdim)}
 .tail{margin-top:58px; font-size:12.5px; color:#5B5B60; max-width:60ch; line-height:1.6}
 
+/* Плавающая кнопка: единственный элемент, который виден всегда. */
+.float{
+  position:fixed; right:20px; bottom:20px; z-index:80;
+  display:flex; align-items:center; gap:10px;
+  opacity:0; transform:translateY(14px); pointer-events:none;
+  transition:opacity .4s var(--ease), transform .4s var(--ease);
+}
+.float.on{opacity:1; transform:none; pointer-events:auto}
+.float a{
+  text-decoration:none; font-weight:600; font-size:15px;
+  box-shadow:0 10px 30px rgba(0,0,0,.45);
+  transition:transform .25s var(--ease), background .25s, color .25s, border-color .25s;
+}
+.f-main{background:var(--sig); color:#04150D; padding:14px 22px; border-radius:14px}
+.f-main:hover{transform:translateY(-2px); background:#2BF0A4}
+.f-tg{
+  width:48px; height:48px; border-radius:14px; display:flex;
+  align-items:center; justify-content:center; font-size:13px;
+  background:#131316; color:#C2C8D0; border:1px solid rgba(255,255,255,.18);
+}
+.f-tg:hover{transform:translateY(-2px); color:#fff; border-color:rgba(255,255,255,.45)}
+@media(max-width:520px){
+  .float{right:12px; bottom:12px; gap:8px}
+  .f-main{font-size:14px; padding:13px 18px}
+  .f-tg{width:44px; height:44px}
+}
+@media (prefers-reduced-motion:reduce){.float{transition:none}}
+
 /* ---------- просмотр во весь экран ---------- */
 .viewer{
   position:fixed; inset:0; z-index:100; background:var(--black);
@@ -468,13 +537,15 @@ p{margin:0}
   <a class="me" href="#top">Азат Шарипов</a>
   <nav>
     <a href="#pain">Узнаёте?</a>
-    <a href="#method">Как разбираю</a>
+    <a href="#free">Разбор</a>
     <a href="#about">О себе</a>
     <a href="#choose">Как выбираю</a>
-    <a href="#works">Работы</a>
+    <a href="#works">Примеры</a>
     <a href="#money">Деньги</a>
+    <a href="#hh">Работодателям</a>
     <a href="#call">Связаться</a>
   </nav>
+  <a class="bar-cta" href="https://wa.me/79120175469?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BA%D0%B0%D0%B7%D0%B0%D1%82%D1%8C%20%D0%B1%D0%B5%D1%81%D0%BF%D0%BB%D0%B0%D1%82%D0%BD%D1%8B%D0%B9%20%D1%80%D0%B0%D0%B7%D0%B1%D0%BE%D1%80." target="_blank" rel="noopener">Заказать разбор</a>
 </div></div>
 
 <div class="dots" id="dots"></div>
@@ -486,7 +557,8 @@ p{margin:0}
     <p class="pre rise">Здравствуйте, меня зовут Азат.</p>
     <h1 class="big rise d1">Разбираю, как устроена работа в компании, и убираю то, на чём теряются деньги.</h1>
     <p class="lede rise d2">Офис или производство. Приеду, посмотрю своими глазами, разложу работу по шагам и покажу, что из неё можно убрать — и во сколько это обойдётся.</p>
-    <a class="cta rise d3" href="#pain">С чего начать <span class="down">↓</span></a>
+    <a class="cta big-cta rise d3" href="#free">Первичный разбор — бесплатно <span class="down">↓</span></a>
+    <p class="cta-sub rise d3">3–4 часа смотрю, как устроена работа. Считаю, сколько часов и денег уходит впустую. Отдаю список того, что можно закрыть, с ценой и сроком. Без обязательств.</p>
     <div class="quick rise d3">
       <div><b data-count="7">7</b><span>работ, которые<br>можно открыть здесь</span></div>
       <div><b data-count="150" data-suffix="+">150+</b><span>человек пользуются<br>моим приложением</span></div>
@@ -509,37 +581,49 @@ p{margin:0}
       <div class="pain"><span>06</span><p>Резюме, счета и заявки читают глазами, потому что «а как иначе».</p></div>
     </div>
     <p class="lede soft rise d3" style="margin-top:32px;max-width:60ch">Если узнали хотя бы два пункта — ниже семь работ, где я такое уже убирал. Любую можно открыть и потрогать.</p>
-    <a class="next rise d3" href="#method">Как я это разбираю <span class="down">↓</span></a>
+    <a class="next rise d3" href="#free">Как работаем <span class="down">↓</span></a>
   </div>
 </section>
 
-<!-- ================= как разбираю ================= -->
-<section class="panel deep" id="method" data-dot="Как разбираю">
+<!-- ================= бесплатный разбор ================= -->
+<section class="panel deep" id="free" data-dot="Разбор">
   <div class="inner">
-    <p class="eyebrow rise">Как я разбираю компанию</p>
-    <h2 class="mid rise d1">Сначала смотрю, как работа идёт на самом деле. Потом считаю. И только потом что-то делаю.</h2>
-    <div class="steps rise d1">
-      <div class="stp"><div class="n">01</div><div>
-        <h3>Приезжаю и смотрю</h3>
-        <p>Не по презентации и не по регламенту, а как оно есть: кто что делает руками, где переписывают из одного места в другое, где люди ждут друг друга. Офис, склад, цех — без разницы.</p>
+    <p class="eyebrow rise">С чего начинаем</p>
+    <h2 class="big rise d1">Первичный разбор — бесплатно.</h2>
+    <p class="lede soft rise d2" style="margin-top:20px;max-width:62ch">Три-четыре часа смотрю, как работа идёт на самом деле. Считаю в часах и деньгах. Отдаю список: что можно закрыть, чем именно и во сколько это обойдётся. Дальше решаете вы — обязательств никаких.</p>
+
+    <div class="steps rise d2">
+      <div class="stp"><div class="n">Шаг 1</div><div>
+        <h3>Бесплатный разбор, 3–4 часа</h3>
+        <p>Смотрю процессы своими глазами: кто что делает руками, где переписывают из одного места в другое, где люди ждут друг друга. Офис, склад, цех — без разницы. Считаю: сколько человек, сколько часов в неделю, сколько это стоит в месяц.</p>
+        <p class="stp-out">На выходе: сэкономим столько-то часов, это столько-то рублей в месяц. И список, что чем закрывается — обычной программой, нейросетью или ничем.</p>
       </div></div>
-      <div class="stp"><div class="n">02</div><div>
-        <h3>Считаю в часах и деньгах</h3>
-        <p>Сколько человек, сколько часов в неделю, сколько это стоит в месяц. Без этой цифры разговор про автоматизацию — разговор ни о чём.</p>
+      <div class="stp"><div class="n">Шаг 2</div><div>
+        <h3>Делаем самое дешёвое из списка</h3>
+        <p>Не всё сразу, а одну вещь с понятным результатом. Через неделю видно, сработало или нет — и решение принимается по факту, а не по обещаниям.</p>
+        <p class="stp-out">На выходе: работающая вещь, которой пользуются каждый день.</p>
       </div></div>
-      <div class="stp"><div class="n">03</div><div>
-        <h3>Говорю, что чем закрывается</h3>
-        <p>Обычной программой, нейросетью или ничем — иногда дешевле оставить как есть. Половина того, что сегодня продают как ИИ, делается обычным кодом и потом не стоит ни рубля в месяц.</p>
-      </div></div>
-      <div class="stp"><div class="n">04</div><div>
-        <h3>Делаю самое дешёвое из списка</h3>
-        <p>Не всё сразу, а одну вещь, у которой понятный результат. Через неделю-две видно, сработало или нет — и решение принимается по факту, а не по обещаниям.</p>
-      </div></div>
-      <div class="stp"><div class="n">05</div><div>
+      <div class="stp"><div class="n">Шаг 3</div><div>
         <h3>Дальше по списку</h3>
         <p>Остальное берём по очереди, каждый раз с ценой и сроком. Ничего не начинаем, пока предыдущее не заработало.</p>
       </div></div>
     </div>
+
+    <h3 class="price-h rise d2">Сколько это стоит</h3>
+    <div class="prices rise d2">
+      <div class="price free-p"><b>0 ₽</b><span>разбор на месте</span></div>
+      <div class="price"><b>50–150 тыс.</b><span>небольшая задача: одна проверка, один отчёт, один бот</span></div>
+      <div class="price"><b>150–500 тыс.</b><span>средняя: несколько связанных вещей, свои экраны, интеграции</span></div>
+      <div class="price"><b>Обсуждаем</b><span>крупная: система, которой пользуется весь отдел</span></div>
+    </div>
+    <p class="soft rise d3" style="margin-top:16px;font-size:14.5px">Результат фиксируем до старта: что именно должно измениться и как это проверим. Деньги — после.</p>
+
+    <div class="honest rise d3">
+      <p><b>Скажу честно: отзывов у меня пока нет.</b> Этот формат я начал недавно, и первые клиенты только появляются.</p>
+      <p>Поэтому разбор и бесплатный. Вы ничем не рискуете — в худшем случае потеряете три часа и получите список своих потерь в цифрах. А я получаю результат, который смогу показать следующему.</p>
+      <p>Всё, что я делал раньше, — ниже на этой странице. Любую работу можно открыть прямо здесь и потрогать.</p>
+    </div>
+
     <a class="next rise d3" href="#about">Кто я такой <span class="down">↓</span></a>
   </div>
 </section>
@@ -576,15 +660,16 @@ p{margin:0}
       </div>
     </div>
     <p class="lede soft rise d3" style="margin-top:34px;max-width:64ch">Нейросети мало сказать «сделай». Ей нужно объяснить по шагам: что на входе, что должно получиться, где ошибаться нельзя.</p>
-    <a class="next rise d3" href="#works">Перейти к работам <span class="down">↓</span></a>
+    <a class="next rise d3" href="#works">Примеры решений <span class="down">↓</span></a>
   </div>
 </section>
 
 <!-- ================= работы ================= -->
 <section class="panel dark" id="works" data-dot="Работы">
   <div class="inner wide">
-    <p class="eyebrow rise">Что я сделал</p>
-    <h2 class="mid rise d1">Семь работ. Любую можно открыть прямо здесь и потыкать.</h2>
+    <p class="eyebrow rise">Примеры решений</p>
+    <h2 class="mid rise d1">Семь примеров того, что обычно и находится при разборе.</h2>
+    <p class="lede soft rise d1" style="margin-top:14px;max-width:64ch">Это не витрина готовых продуктов, а типы задач: у вас они будут другими по содержанию, но такими же по сути. Любую можно открыть прямо здесь и потрогать.</p>
     <div class="filters rise d1" id="filters"></div>
     <div class="cards" id="cards"></div>
 
@@ -628,6 +713,17 @@ p{margin:0}
       <span>Supabase</span><span>PHP</span><span>Firebase</span><span>API и webhooks</span>
       <span>JSON</span><span>Git</span><span>GitHub Pages</span>
     </div>
+    <a class="next rise d3" href="#hh">Работодателям <span class="down">↓</span></a>
+  </div>
+</section>
+
+<!-- ================= для работодателей ================= -->
+<section class="panel dark" id="hh" data-dot="Работодателям">
+  <div class="inner narrow claim-wrap">
+    <p class="eyebrow rise">Если вы с hh</p>
+    <h2 class="mid rise d1">В штат тоже иду.</h2>
+    <p class="lede soft rise d2" style="margin-top:18px;max-width:52ch">Откликаюсь на вакансии, где нужно наладить процессы, собрать отчётность или разобраться с автоматизацией. Параллельно беру проекты — ищу компании, где есть ручная работа и её никто не считал.</p>
+    <p class="lede soft rise d2" style="margin-top:16px;max-width:52ch">Если сомневаетесь, подхожу ли, — предложите разбор. Три часа, бесплатно, и станет видно, что я умею на вашем материале, а не на словах.</p>
     <a class="next rise d3" href="#call">Связаться <span class="down">↓</span></a>
   </div>
 </section>
@@ -643,6 +739,11 @@ p{margin:0}
 </section>
 
 <!-- ================= окно просмотра ================= -->
+<div class="float" id="float">
+  <a class="f-main" href="https://wa.me/79120175469?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BA%D0%B0%D0%B7%D0%B0%D1%82%D1%8C%20%D0%B1%D0%B5%D1%81%D0%BF%D0%BB%D0%B0%D1%82%D0%BD%D1%8B%D0%B9%20%D1%80%D0%B0%D0%B7%D0%B1%D0%BE%D1%80." target="_blank" rel="noopener">Заказать разбор</a>
+  <a class="f-tg" href="https://t.me/a_sharipoff" target="_blank" rel="noopener" aria-label="Написать в Telegram">TG</a>
+</div>
+
 <div class="viewer" id="viewer" role="dialog" aria-modal="true" aria-label="Просмотр работы">
   <div class="v-bar">
     <span class="t" id="v-title"></span>
@@ -671,7 +772,9 @@ var CONTACT = {
   var box = document.getElementById("links");
   var tg = CONTACT.tg.replace(/^@/, "");
   var rows = [];
-  if(tg)            rows.push(["Telegram", "@" + tg, "https://t.me/" + tg]);
+  if(tg)            rows.push(["Telegram", "Написать в чат", "https://t.me/" + tg]);
+  var digits = CONTACT.phone.replace(/\D/g, "");
+  if(digits)        rows.push(["WhatsApp", "Написать в чат", "https://wa.me/" + (digits[0] === "8" ? "7" + digits.slice(1) : digits)]);
   if(CONTACT.phone) rows.push(["Телефон", CONTACT.phone, "tel:" + CONTACT.phone.replace(/[^\d+]/g, "")]);
   if(CONTACT.mail)  rows.push(["Почта", CONTACT.mail, "mailto:" + CONTACT.mail]);
   if(CONTACT.gh)    rows.push(["GitHub", "github.com/" + CONTACT.gh, "https://github.com/" + CONTACT.gh]);
@@ -926,6 +1029,9 @@ var CATS = [
     });
     inner.appendChild(rows);
 
+    inner.appendChild(el("p", "card-note",
+      "Это пример типа задачи. У вас она будет своя — разбор покажет какая."));
+
     var btns = el("div", "btns");
     var open = el("button", "cta", "Открыть здесь");
     open.type = "button";
@@ -1009,9 +1115,12 @@ if(reduce){
 
 // Какая панель сейчас в середине окна — та точка и горит.
 var bar = document.getElementById("bar"), ticking = false;
+var floatBtn = document.getElementById("float");
 function onScroll(){
   ticking = false;
   bar.classList.toggle("on", scrollY > innerHeight * 0.7);
+  // Кнопку показываем, когда первый экран уже пролистали.
+  if(floatBtn) floatBtn.classList.toggle("on", scrollY > innerHeight * 0.5);
   var mid = innerHeight / 2, best = 0, bestDist = Infinity;
   panels.forEach(function(p, i){
     var r = p.getBoundingClientRect();
