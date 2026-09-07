@@ -436,6 +436,27 @@ p{margin:0}
 }
 .dark .kit span,.deep .kit span{border-color:rgba(255,255,255,.14); color:var(--light-ink)}
 
+/* Форма заявки: человеку не надо никуда уходить со страницы. */
+.ask{display:grid; gap:14px; max-width:520px; margin:36px auto 0; width:100%; text-align:left}
+.ask-row label{display:block; font-size:13px; color:#8E959D; margin-bottom:7px}
+.ask-row label i{font-style:normal; color:var(--sig)}
+.ask input,.ask textarea{
+  width:100%; font-family:var(--sans); font-size:16px; color:#F2F4F7;
+  background:#0E1013; border:1px solid rgba(255,255,255,.16); border-radius:12px;
+  padding:13px 15px; transition:border-color .2s;
+}
+.ask textarea{min-height:96px; resize:vertical}
+.ask input::placeholder,.ask textarea::placeholder{color:#5C646E}
+.ask input:focus,.ask textarea:focus{outline:none; border-color:var(--sig)}
+.ask .cta{margin-top:4px; justify-content:center; width:100%}
+.ask-msg{display:none; font-size:14.5px; line-height:1.5; padding-left:13px;
+  border-left:2px solid var(--sig); color:#C5CBD3}
+.ask-msg.on{display:block}
+.ask-msg.err{border-left-color:var(--alarm); color:#FF8B7A}
+.ask-note{font-size:14px; color:#71787F; text-align:center; margin-top:4px}
+.ask-note a{color:#C5CBD3; text-decoration:none; border-bottom:1px solid rgba(255,255,255,.25)}
+.ask-note a:hover{color:#fff}
+
 /* ---------- контакты ---------- */
 /* Раньше были зелёные «таблетки» — выглядели дёшево. Теперь список:
    подпись, значение, стрелка. Разделители тонкой чертой. */
@@ -479,15 +500,15 @@ p{margin:0}
 .f-main{background:var(--sig); color:#04150D; padding:14px 22px; border-radius:14px}
 .f-main:hover{transform:translateY(-2px); background:#2BF0A4}
 .f-tg{
-  width:48px; height:48px; border-radius:14px; display:flex;
-  align-items:center; justify-content:center; font-size:13px;
+  padding:14px 18px; border-radius:14px; display:flex;
+  align-items:center; justify-content:center; font-size:14px;
   background:#131316; color:#C2C8D0; border:1px solid rgba(255,255,255,.18);
 }
 .f-tg:hover{transform:translateY(-2px); color:#fff; border-color:rgba(255,255,255,.45)}
 @media(max-width:520px){
   .float{right:12px; bottom:12px; gap:8px}
   .f-main{font-size:14px; padding:13px 18px}
-  .f-tg{width:44px; height:44px}
+  .f-tg{padding:13px 15px; font-size:13px}
 }
 @media (prefers-reduced-motion:reduce){.float{transition:none}}
 
@@ -545,7 +566,7 @@ p{margin:0}
     <a href="#hh">Работодателям</a>
     <a href="#call">Связаться</a>
   </nav>
-  <a class="bar-cta" href="https://wa.me/79120175469?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BA%D0%B0%D0%B7%D0%B0%D1%82%D1%8C%20%D0%B1%D0%B5%D1%81%D0%BF%D0%BB%D0%B0%D1%82%D0%BD%D1%8B%D0%B9%20%D1%80%D0%B0%D0%B7%D0%B1%D0%BE%D1%80." target="_blank" rel="noopener">Заказать разбор</a>
+  <a class="bar-cta" href="#call">Заказать разбор</a>
 </div></div>
 
 <div class="dots" id="dots"></div>
@@ -733,6 +754,24 @@ p{margin:0}
   <div class="inner narrow claim-wrap" style="display:flex;flex-direction:column;align-items:center">
     <h2 class="big rise">Расскажите про задачу — предложу решение.</h2>
     <p class="lede soft rise d1" style="margin-top:24px;max-width:46ch">Покажите процесс, который отнимает время, — скажу, что из него можно убрать и сколько это займёт. Разбор бесплатный. По Ижевску приеду на место, в другие города — по договорённости. Дальше работаю проектами: срок, цена, результат. Или в штат, если так удобнее.</p>
+    <form class="ask rise d2" id="ask" novalidate>
+      <div class="ask-row">
+        <label for="a-name">Как к вам обращаться</label>
+        <input id="a-name" name="Имя" type="text" autocomplete="name" placeholder="Имя">
+      </div>
+      <div class="ask-row">
+        <label for="a-contact">Телефон или почта <i>*</i></label>
+        <input id="a-contact" name="Телефон или почта" type="text" autocomplete="tel" placeholder="+7 ... или почта" required>
+      </div>
+      <div class="ask-row">
+        <label for="a-text">Вопрос или что отнимает время</label>
+        <textarea id="a-text" name="Сообщение" placeholder="Пара строк — этого хватит, чтобы я понял, о чём речь"></textarea>
+      </div>
+      <button class="cta" type="submit" id="a-send">Отправить</button>
+      <p class="ask-msg" id="a-msg"></p>
+      <p class="ask-note">Или позвоните: <a href="tel:+79120175469">+7 912 017-54-69</a></p>
+    </form>
+
     <div class="links rise d2" id="links"></div>
     <p class="tail rise d3">Все ссылки ведут на работающие страницы, а не на картинки. В разборе откликов люди выдуманы — настоящие резюме в примеры не беру. Ижевск, работаю удалённо.</p>
   </div>
@@ -740,8 +779,8 @@ p{margin:0}
 
 <!-- ================= окно просмотра ================= -->
 <div class="float" id="float">
-  <a class="f-main" href="https://wa.me/79120175469?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BA%D0%B0%D0%B7%D0%B0%D1%82%D1%8C%20%D0%B1%D0%B5%D1%81%D0%BF%D0%BB%D0%B0%D1%82%D0%BD%D1%8B%D0%B9%20%D1%80%D0%B0%D0%B7%D0%B1%D0%BE%D1%80." target="_blank" rel="noopener">Заказать разбор</a>
-  <a class="f-tg" href="https://t.me/a_sharipoff" target="_blank" rel="noopener" aria-label="Написать в Telegram">TG</a>
+  <a class="f-main" href="#call">Оставить заявку</a>
+  <a class="f-tg" href="tel:+79120175469" aria-label="Позвонить">Позвонить</a>
 </div>
 
 <div class="viewer" id="viewer" role="dialog" aria-modal="true" aria-label="Просмотр работы">
@@ -773,8 +812,6 @@ var CONTACT = {
   var tg = CONTACT.tg.replace(/^@/, "");
   var rows = [];
   if(tg)            rows.push(["Telegram", "Написать в чат", "https://t.me/" + tg]);
-  var digits = CONTACT.phone.replace(/\D/g, "");
-  if(digits)        rows.push(["WhatsApp", "Написать в чат", "https://wa.me/" + (digits[0] === "8" ? "7" + digits.slice(1) : digits)]);
   if(CONTACT.phone) rows.push(["Телефон", CONTACT.phone, "tel:" + CONTACT.phone.replace(/[^\d+]/g, "")]);
   if(CONTACT.mail)  rows.push(["Почта", CONTACT.mail, "mailto:" + CONTACT.mail]);
   if(CONTACT.gh)    rows.push(["GitHub", "github.com/" + CONTACT.gh, "https://github.com/" + CONTACT.gh]);
@@ -857,6 +894,53 @@ document.getElementById("v-close").addEventListener("click", closeWork);
 addEventListener("keydown", function(e){
   if(e.key === "Escape" && viewer.classList.contains("on")) closeWork();
 });
+
+/* Заявка уходит на почту через formsubmit — своего сервера для этого не нужно.
+   Если отправка не прошла, показываем телефон, а не пустую ошибку. */
+(function askForm(){
+  var f = document.getElementById("ask");
+  if(!f) return;
+  var msg = document.getElementById("a-msg"), btn = document.getElementById("a-send");
+
+  f.addEventListener("submit", function(e){
+    e.preventDefault();
+    var contact = document.getElementById("a-contact");
+    if(!contact.value.trim()){
+      msg.className = "ask-msg on err";
+      msg.textContent = "Оставьте телефон или почту — иначе я не смогу ответить.";
+      contact.focus();
+      return;
+    }
+    btn.disabled = true;
+    btn.textContent = "Отправляю…";
+    msg.className = "ask-msg on";
+    msg.textContent = "Отправляю…";
+
+    fetch("https://formsubmit.co/ajax/azat_ilfakovich@mail.ru", {
+      method: "POST",
+      headers: {"Content-Type": "application/json", "Accept": "application/json"},
+      body: JSON.stringify({
+        "Имя": document.getElementById("a-name").value.trim() || "не указано",
+        "Телефон или почта": contact.value.trim(),
+        "Сообщение": document.getElementById("a-text").value.trim() || "—",
+        "_subject": "Заявка с сайта",
+        "_captcha": "false",
+        "_template": "table"
+      })
+    }).then(function(r){
+      if(!r.ok) throw new Error("bad status");
+      msg.className = "ask-msg on";
+      msg.textContent = "Отправлено. Свяжусь в течение дня.";
+      btn.textContent = "Отправлено";
+      f.reset();
+    }).catch(function(){
+      msg.className = "ask-msg on err";
+      msg.textContent = "Не отправилось. Позвоните: +7 912 017-54-69 или напишите на azat_ilfakovich@mail.ru";
+      btn.disabled = false;
+      btn.textContent = "Отправить";
+    });
+  });
+})();
 
 /* ---- работы карточками ----
    Всё в одном списке: цифры, три строки разбора и метка про расход на нейросеть.
