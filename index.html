@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Азат Шарипов</title>
-<meta name="description" content="Убираю из компаний ручную работу, на которой теряются деньги. Семь работающих примеров, любой можно открыть. Беру проектами и в штат.">
+<meta name="description" content="Разбираю работу компании и убираю то, на чём теряются деньги. Офис или производство, выезд на место. Семь работающих примеров. Беру проектами и в штат.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600;700&display=swap">
@@ -217,6 +217,17 @@ p{margin:0}
 .pain:hover{background:var(--pale)}
 .pain span{display:block; font-size:12px; font-weight:600; color:#067A4E; margin-bottom:10px}
 .pain p{font-size:15.5px; line-height:1.5; color:var(--dark-ink)}
+
+/* Шаги разбора: нумерация здесь настоящая — это порядок, а не украшение. */
+.steps{border-top:1px solid rgba(255,255,255,.10); margin-top:34px}
+.stp{display:grid; grid-template-columns:70px 1fr; gap:24px; padding:24px 0;
+  border-bottom:1px solid rgba(255,255,255,.10); align-items:start;
+  transition:padding-left .35s var(--ease)}
+.stp:hover{padding-left:10px}
+@media(max-width:640px){.stp{grid-template-columns:46px 1fr; gap:16px}}
+.stp .n{font-size:15px; font-weight:600; color:var(--sig); padding-top:3px}
+.stp h3{font-size:19px; font-weight:600; letter-spacing:-.02em; color:#F2F4F7}
+.stp p{font-size:15px; line-height:1.55; color:#9AA1AA; margin-top:7px; max-width:66ch}
 
 /* ---------- работы карточками ---------- */
 .wide{max-width:1180px}
@@ -457,6 +468,7 @@ p{margin:0}
   <a class="me" href="#top">Азат Шарипов</a>
   <nav>
     <a href="#pain">Узнаёте?</a>
+    <a href="#method">Как разбираю</a>
     <a href="#about">О себе</a>
     <a href="#choose">Как выбираю</a>
     <a href="#works">Работы</a>
@@ -472,8 +484,8 @@ p{margin:0}
   <div class="inner">
     <div class="face" id="face"><span>АШ</span></div>
     <p class="pre rise">Здравствуйте, меня зовут Азат.</p>
-    <h1 class="big rise d1">Убираю из компании ручную работу, на которой теряются деньги.</h1>
-    <p class="lede rise d2">Делаю сайты, приложения и ботов. Много лет работаю в продажах — поэтому вижу задачу глазами тех, кто с ней живёт каждый день.</p>
+    <h1 class="big rise d1">Разбираю, как устроена работа в компании, и убираю то, на чём теряются деньги.</h1>
+    <p class="lede rise d2">Офис или производство. Приеду, посмотрю своими глазами, разложу работу по шагам и покажу, что из неё можно убрать — и во сколько это обойдётся.</p>
     <a class="cta rise d3" href="#pain">С чего начать <span class="down">↓</span></a>
     <div class="quick rise d3">
       <div><b data-count="7">7</b><span>работ, которые<br>можно открыть здесь</span></div>
@@ -497,7 +509,38 @@ p{margin:0}
       <div class="pain"><span>06</span><p>Резюме, счета и заявки читают глазами, потому что «а как иначе».</p></div>
     </div>
     <p class="lede soft rise d3" style="margin-top:32px;max-width:60ch">Если узнали хотя бы два пункта — ниже семь работ, где я такое уже убирал. Любую можно открыть и потрогать.</p>
-    <a class="next rise d3" href="#works">Посмотреть работы <span class="down">↓</span></a>
+    <a class="next rise d3" href="#method">Как я это разбираю <span class="down">↓</span></a>
+  </div>
+</section>
+
+<!-- ================= как разбираю ================= -->
+<section class="panel deep" id="method" data-dot="Как разбираю">
+  <div class="inner">
+    <p class="eyebrow rise">Как я разбираю компанию</p>
+    <h2 class="mid rise d1">Сначала смотрю, как работа идёт на самом деле. Потом считаю. И только потом что-то делаю.</h2>
+    <div class="steps rise d1">
+      <div class="stp"><div class="n">01</div><div>
+        <h3>Приезжаю и смотрю</h3>
+        <p>Не по презентации и не по регламенту, а как оно есть: кто что делает руками, где переписывают из одного места в другое, где люди ждут друг друга. Офис, склад, цех — без разницы.</p>
+      </div></div>
+      <div class="stp"><div class="n">02</div><div>
+        <h3>Считаю в часах и деньгах</h3>
+        <p>Сколько человек, сколько часов в неделю, сколько это стоит в месяц. Без этой цифры разговор про автоматизацию — разговор ни о чём.</p>
+      </div></div>
+      <div class="stp"><div class="n">03</div><div>
+        <h3>Говорю, что чем закрывается</h3>
+        <p>Обычной программой, нейросетью или ничем — иногда дешевле оставить как есть. Половина того, что сегодня продают как ИИ, делается обычным кодом и потом не стоит ни рубля в месяц.</p>
+      </div></div>
+      <div class="stp"><div class="n">04</div><div>
+        <h3>Делаю самое дешёвое из списка</h3>
+        <p>Не всё сразу, а одну вещь, у которой понятный результат. Через неделю-две видно, сработало или нет — и решение принимается по факту, а не по обещаниям.</p>
+      </div></div>
+      <div class="stp"><div class="n">05</div><div>
+        <h3>Дальше по списку</h3>
+        <p>Остальное берём по очереди, каждый раз с ценой и сроком. Ничего не начинаем, пока предыдущее не заработало.</p>
+      </div></div>
+    </div>
+    <a class="next rise d3" href="#about">Кто я такой <span class="down">↓</span></a>
   </div>
 </section>
 
@@ -593,7 +636,7 @@ p{margin:0}
 <section class="panel dark" id="call" data-dot="Связаться">
   <div class="inner narrow claim-wrap" style="display:flex;flex-direction:column;align-items:center">
     <h2 class="big rise">Расскажите про задачу — предложу решение.</h2>
-    <p class="lede soft rise d1" style="margin-top:24px;max-width:46ch">Покажите процесс, который отнимает время, — скажу, что из него можно убрать и сколько это займёт. Смотреть бесплатно. Дальше работаю проектами: срок, цена, результат. Или в штат, если так удобнее.</p>
+    <p class="lede soft rise d1" style="margin-top:24px;max-width:46ch">Покажите процесс, который отнимает время, — скажу, что из него можно убрать и сколько это займёт. Разбор бесплатный. По Ижевску приеду на место, в другие города — по договорённости. Дальше работаю проектами: срок, цена, результат. Или в штат, если так удобнее.</p>
     <div class="links rise d2" id="links"></div>
     <p class="tail rise d3">Все ссылки ведут на работающие страницы, а не на картинки. В разборе откликов люди выдуманы — настоящие резюме в примеры не беру. Ижевск, работаю удалённо.</p>
   </div>
